@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@color/whiteColor"
+              android:id="@+id/linearLayout">
+
+    <android.support.v7.widget.Toolbar
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="-10dp"
+            android:background="@color/colorPrimary"
+            android:id="@+id/toolbar">
+        />
+
+
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                      android:layout_width="match_parent"
+                      android:layout_height="match_parent"
+                      android:orientation="horizontal"
+        >
+
+            <TextView
+                    android:id="@+id/text_screen_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="20sp"
+                    android:text="CREATE A WALLET"
+                    android:gravity="center"
+                    android:textColor="@color/whiteColor"
+            />
+        </LinearLayout>
+
+
+
+    </android.support.v7.widget.Toolbar>
+
+    <TextView android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:text="@string/name"
+              android:textColor="@color/blackColor"
+              android:textSize="@dimen/text_size"
+              android:layout_marginLeft="@dimen/layout_margin_left"
+              android:layout_marginTop="@dimen/layout_margin_top"/>
+    <EditText
+            android:id="@+id/et_name"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/edittext_height"
+            android:background="@drawable/restore_wallet_field_background"
+            android:layout_marginLeft="@dimen/layout_margin_left"
+            android:layout_marginRight="@dimen/layout_margin_left"
+            android:paddingLeft="@dimen/padding_left"
+            android:textSize="@dimen/text_size"/>
+    <TextView android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:text="@string/password"
+              android:textColor="@color/blackColor"
+              android:textSize="@dimen/text_size"
+              android:layout_marginLeft="@dimen/layout_margin_left"
+              android:layout_marginTop="@dimen/layout_margin"/>
+    <EditText
+            android:id="@+id/et_password"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/edittext_height"
+            android:background="@drawable/restore_wallet_field_background"
+            android:layout_marginLeft="@dimen/layout_margin_left"
+            android:layout_marginRight="@dimen/layout_margin_left"
+            android:paddingLeft="@dimen/padding_left"
+            android:gravity="center_vertical"
+            android:textSize="@dimen/text_size"
+            android:inputType="textPassword"/>
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/confirm_password"
+            android:textColor="@color/blackColor"
+            android:textSize="@dimen/text_size"
+            android:layout_marginTop="@dimen/layout_margin"
+            android:layout_marginLeft="@dimen/layout_margin_left"
+    />
+
+    <EditText
+            android:id="@+id/confirmPassord"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/edittext_height"
+            android:background="@drawable/restore_wallet_field_background"
+            android:layout_marginLeft="@dimen/layout_margin_left"
+            android:layout_marginRight="@dimen/layout_margin_left"
+            android:paddingLeft="@dimen/padding_left"
+            android:textSize="@dimen/text_size"
+            android:inputType="textPassword"/>
+
+    <TextView android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:layout_marginTop="@dimen/layout_margin"
+              android:layout_marginLeft="@dimen/layout_margin_left"
+              android:layout_marginRight="@dimen/layout_margin_left"
+              android:layout_marginBottom="@dimen/layout_margin"
+              android:text="@string/your_password_will_be_required"
+              android:textSize="@dimen/text_size_small"/>
+
+    <Button
+            android:id="@+id/btn_create_wallet"
+            android:layout_width="@dimen/button_width"
+            android:layout_height="@dimen/edittext_height"
+            android:layout_gravity="center"
+            android:text="@string/create_new_wallet"
+            android:textColor="@color/whiteColor"
+            android:textAllCaps="false"
+            android:layout_margin="@dimen/layout_margin"
+            android:background="@drawable/login_btn_background"/>
+
+    <include layout="@layout/boottombar"/>
+</LinearLayout>

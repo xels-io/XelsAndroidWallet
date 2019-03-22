@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@color/whiteColor">
+
+    <ImageView
+            android:id="@+id/qrCode"
+            android:layout_width="@dimen/qr_image_size"
+            android:layout_height="@dimen/qr_image_size"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/layout_margin_top_large"
+    />
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_gravity="center"
+            android:background="@drawable/receive_area"
+            android:layout_margin="@dimen/layout_margin_top"
+    >
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+        >
+            <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/addressTxtView"
+                    android:text=""
+                    android:textSize="@dimen/text_size_small"
+                    android:gravity="center"
+                    android:layout_weight="2"
+                    android:layout_marginTop="@dimen/layout_margin"
+                    android:layout_marginBottom="@dimen/layout_margin"
+                    android:layout_marginLeft="@dimen/layout_margin_small"
+                    android:layout_marginRight="@dimen/layout_margin_small"
+
+            />
+        </LinearLayout>
+        <Button
+                android:id="@+id/copyToClipBoardBtn"
+                android:layout_width="20dp"
+                android:layout_height="25dp"
+                android:layout_gravity="center"
+                android:background="@drawable/paste_icon"
+                android:layout_marginBottom="@dimen/bottom_line_height"
+        />
+    </LinearLayout>
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/showAllAddressTxtView"
+            android:text="@string/show_all_addresses"
+            android:textColor="@color/colorPrimary"
+            android:layout_gravity="center"
+            android:textSize="@dimen/text_size"
+    />
+
+</LinearLayout>
