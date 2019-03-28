@@ -16,11 +16,11 @@
     <TextView
             android:id="@+id/amountAvailableTxtView"
             android:layout_width="match_parent"
-              android:layout_height="wrap_content"
-              android:textColor="@color/colorPrimary"
-              android:gravity="center"
-              android:layout_marginTop="@dimen/layout_margin_small"
-              android:maxLines="1"/>
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorPrimary"
+            android:gravity="center"
+            android:layout_marginTop="@dimen/layout_margin_small"
+            android:maxLines="1"/>
 
     <ScrollView
             android:layout_width="match_parent"
@@ -38,11 +38,14 @@
                     android:layout_marginRight="@dimen/layout_margin_left"
                     android:layout_marginTop="@dimen/layout_margin">
 
-                <TextView android:layout_width="wrap_content"
-                          android:layout_height="wrap_content"
-                          android:textColor="@color/colorPrimary"
-                          android:text="@string/amount"
-                          android:textSize="@dimen/text_size"/>
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/layout_margin_small"
+                        android:paddingLeft="@dimen/padding_left"
+                        android:textColor="@color/colorPrimary"
+                        android:text="@string/amount"
+                        android:textSize="@dimen/text_size"/>
 
                 <EditText
                         android:id="@+id/amountEditTxt"
@@ -58,19 +61,23 @@
 
 
             </LinearLayout>
-            <LinearLayout android:layout_width="match_parent"
-                          android:layout_height="wrap_content"
-                          android:orientation="vertical"
-                          android:layout_marginLeft="@dimen/layout_margin_left"
-                          android:layout_marginRight="@dimen/layout_margin_left"
-                          android:layout_marginTop="@dimen/bottom_line_height">
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginLeft="@dimen/layout_margin_left"
+                    android:layout_marginRight="@dimen/layout_margin_left"
+                    android:layout_marginTop="@dimen/bottom_line_height">
 
 
-                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-                          android:textColor="@color/colorPrimary"
-                          android:text="@string/destination_address"
-                          android:textSize="@dimen/text_size"
-                          android:layout_marginBottom="@dimen/layout_margin_small"/>
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="@dimen/padding_left"
+                        android:textColor="@color/colorPrimary"
+                        android:text="@string/destination_address"
+                        android:textSize="@dimen/text_size"
+                        android:layout_marginBottom="@dimen/layout_margin_small"/>
 
 
                 <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
@@ -107,42 +114,50 @@
             </LinearLayout>
 
 
-            <LinearLayout android:layout_width="match_parent"
-                          android:layout_height="wrap_content"
-                          android:orientation="vertical"
-                          android:layout_marginLeft="@dimen/layout_margin_left"
-                          android:layout_marginRight="@dimen/layout_margin_left"
-                          android:layout_marginTop="@dimen/bottom_line_height">
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginLeft="@dimen/layout_margin_left"
+                    android:layout_marginRight="@dimen/layout_margin_left"
+                    android:layout_marginTop="@dimen/bottom_line_height">
 
 
-                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-                          android:textColor="@color/colorPrimary"
-                          android:text="@string/transaction_fee"
-                          android:textSize="@dimen/text_size"
-                          android:layout_marginBottom="@dimen/layout_margin_small"/>
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="@dimen/padding_left"
+                        android:textColor="@color/colorPrimary"
+                        android:text="@string/transaction_fee"
+                        android:textSize="@dimen/text_size"
+                        android:layout_marginBottom="@dimen/layout_margin_small"/>
 
-                <TextView android:layout_width="match_parent"
-                          android:layout_height="wrap_content"
-                          android:id="@+id/feeEditText"
-                          android:text="@string/please_enter_a_valid_fee"
-                          android:textSize="@dimen/text_size"
-                          android:textColor="@color/darkRed"
+                <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/feeEditText"
+                        android:text="@string/please_enter_a_valid_fee"
+                        android:textSize="@dimen/text_size"
+                        android:textColor="@color/darkRed"
                 />
 
             </LinearLayout>
 
-            <LinearLayout android:layout_width="match_parent"
-                          android:layout_height="wrap_content"
-                          android:orientation="vertical"
-                          android:layout_marginLeft="@dimen/layout_margin_left"
-                          android:layout_marginRight="@dimen/layout_margin_left"
-                          android:layout_marginTop="@dimen/bottom_line_height">
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginLeft="@dimen/layout_margin_left"
+                    android:layout_marginRight="@dimen/layout_margin_left"
+                    android:layout_marginTop="@dimen/bottom_line_height">
 
-                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-                          android:textColor="@color/colorPrimary"
-                          android:text="Wallet Password"
-                          android:textSize="@dimen/text_size"
-                          android:layout_marginBottom="@dimen/layout_margin_small"/>
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/colorPrimary"
+                        android:text="Wallet Password"
+                        android:textSize="@dimen/text_size"
+                        android:layout_marginBottom="@dimen/layout_margin_small"/>
 
                 <EditText
                         android:id="@+id/passwordEditTxtView"
@@ -163,14 +178,15 @@
 
     </ScrollView>
 
-    <LinearLayout android:layout_width="match_parent"
-                  android:layout_height="wrap_content"
-                  android:orientation="horizontal"
-                  android:layout_marginLeft="@dimen/layout_margin_left"
-                  android:layout_marginRight="@dimen/layout_margin_left"
-                  android:layout_marginTop="@dimen/layout_margin_left"
-                  android:layout_marginBottom="@dimen/layout_margin"
-                  android:weightSum="2">
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginLeft="@dimen/layout_margin_left"
+            android:layout_marginRight="@dimen/layout_margin_left"
+            android:layout_marginTop="@dimen/layout_margin_left"
+            android:layout_marginBottom="@dimen/layout_margin"
+            android:weightSum="2">
 
         <Button
                 android:id="@+id/cancelBtn"
