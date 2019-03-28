@@ -13,147 +13,155 @@
             android:gravity="center"
             android:layout_marginTop="@dimen/layout_margin_top"/>
 
-    <TextView android:layout_width="match_parent"
+    <TextView
+            android:id="@+id/amountAvailableTxtView"
+            android:layout_width="match_parent"
               android:layout_height="wrap_content"
               android:textColor="@color/colorPrimary"
               android:gravity="center"
               android:layout_marginTop="@dimen/layout_margin_small"
-              android:id="@+id/amountAvailableTxtView"
               android:maxLines="1"/>
 
-
-    <LinearLayout
+    <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_marginLeft="@dimen/layout_margin_left"
-            android:layout_marginRight="@dimen/layout_margin_left"
-            android:layout_marginTop="@dimen/layout_margin">
-
-        <TextView android:layout_width="wrap_content"
-                  android:layout_height="wrap_content"
-                  android:textColor="@color/colorPrimary"
-                  android:text="@string/amount"
-                  android:textSize="@dimen/text_size"/>
-
-        <EditText
-                android:id="@+id/amountEditTxt"
+            android:layout_height="@dimen/login_scrollview_height">
+        <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/send_et_height"
-                android:background="@drawable/restore_wallet_field_background"
-                android:textSize="@dimen/text_size_small"
-                android:paddingLeft="@dimen/padding_left"
-                android:hint="@string/_0_00_xels"
-                android:text=""
+                android:layout_height="match_parent"
+                android:orientation="vertical">
 
-        />
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginLeft="@dimen/layout_margin_left"
+                    android:layout_marginRight="@dimen/layout_margin_left"
+                    android:layout_marginTop="@dimen/layout_margin">
 
+                <TextView android:layout_width="wrap_content"
+                          android:layout_height="wrap_content"
+                          android:textColor="@color/colorPrimary"
+                          android:text="@string/amount"
+                          android:textSize="@dimen/text_size"/>
 
-    </LinearLayout>
-    <LinearLayout android:layout_width="match_parent"
-                  android:layout_height="wrap_content"
-                  android:orientation="vertical"
-                  android:layout_marginLeft="@dimen/layout_margin_left"
-                  android:layout_marginRight="@dimen/layout_margin_left"
-                  android:layout_marginTop="@dimen/bottom_line_height">
+                <EditText
+                        android:id="@+id/amountEditTxt"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/send_et_height"
+                        android:background="@drawable/restore_wallet_field_background"
+                        android:textSize="@dimen/text_size_small"
+                        android:paddingLeft="@dimen/padding_left"
+                        android:hint="@string/_0_00_xels"
+                        android:text=""
 
-
-        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-                  android:textColor="@color/colorPrimary"
-                  android:text="@string/destination_address"
-                  android:textSize="@dimen/text_size"
-                  android:layout_marginBottom="@dimen/layout_margin_small"/>
-
-
-        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
-                      android:weightSum="2"
-                      android:orientation="horizontal">
-
-            <EditText
-                    android:id="@+id/addressTxtView"
-                    android:layout_width="0dp"
-                    android:layout_height="@dimen/send_et_height"
-                    android:background="@drawable/restore_wallet_field_background"
-                    android:textSize="@dimen/text_size_small"
-                    android:paddingLeft="@dimen/padding_left"
-                    android:hint="@string/please_enter_the_destination_address_here"
-                    android:maxLength="34"
-                    android:text=""
-                    android:layout_weight="2"
-                    android:layout_gravity="center_vertical"
+                />
 
 
-            />
-            <Button android:layout_width="20dp" android:layout_height="25dp"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginRight="10dp"
-                    android:background="@drawable/ic_settings_overscan_green_24dp"
-                    android:layout_marginLeft="10dp"
-                    android:id="@+id/scanBarCodeBtn"
-                    android:visibility="gone"
-            />
+            </LinearLayout>
+            <LinearLayout android:layout_width="match_parent"
+                          android:layout_height="wrap_content"
+                          android:orientation="vertical"
+                          android:layout_marginLeft="@dimen/layout_margin_left"
+                          android:layout_marginRight="@dimen/layout_margin_left"
+                          android:layout_marginTop="@dimen/bottom_line_height">
+
+
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                          android:textColor="@color/colorPrimary"
+                          android:text="@string/destination_address"
+                          android:textSize="@dimen/text_size"
+                          android:layout_marginBottom="@dimen/layout_margin_small"/>
+
+
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                              android:weightSum="2"
+                              android:orientation="horizontal">
+
+                    <EditText
+                            android:id="@+id/addressTxtView"
+                            android:layout_width="0dp"
+                            android:layout_height="@dimen/send_et_height"
+                            android:background="@drawable/restore_wallet_field_background"
+                            android:textSize="@dimen/text_size_small"
+                            android:paddingLeft="@dimen/padding_left"
+                            android:hint="@string/please_enter_the_destination_address_here"
+                            android:maxLength="34"
+                            android:text=""
+                            android:layout_weight="2"
+                            android:layout_gravity="center_vertical"
+
+
+                    />
+                    <Button android:layout_width="20dp" android:layout_height="25dp"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginRight="10dp"
+                            android:background="@drawable/ic_settings_overscan_green_24dp"
+                            android:layout_marginLeft="10dp"
+                            android:id="@+id/scanBarCodeBtn"
+                            android:visibility="gone"
+                    />
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+
+            <LinearLayout android:layout_width="match_parent"
+                          android:layout_height="wrap_content"
+                          android:orientation="vertical"
+                          android:layout_marginLeft="@dimen/layout_margin_left"
+                          android:layout_marginRight="@dimen/layout_margin_left"
+                          android:layout_marginTop="@dimen/bottom_line_height">
+
+
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                          android:textColor="@color/colorPrimary"
+                          android:text="@string/transaction_fee"
+                          android:textSize="@dimen/text_size"
+                          android:layout_marginBottom="@dimen/layout_margin_small"/>
+
+                <TextView android:layout_width="match_parent"
+                          android:layout_height="wrap_content"
+                          android:id="@+id/feeEditText"
+                          android:text="@string/please_enter_a_valid_fee"
+                          android:textSize="@dimen/text_size"
+                          android:textColor="@color/darkRed"
+                />
+
+            </LinearLayout>
+
+            <LinearLayout android:layout_width="match_parent"
+                          android:layout_height="wrap_content"
+                          android:orientation="vertical"
+                          android:layout_marginLeft="@dimen/layout_margin_left"
+                          android:layout_marginRight="@dimen/layout_margin_left"
+                          android:layout_marginTop="@dimen/bottom_line_height">
+
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                          android:textColor="@color/colorPrimary"
+                          android:text="Wallet Password"
+                          android:textSize="@dimen/text_size"
+                          android:layout_marginBottom="@dimen/layout_margin_small"/>
+
+                <EditText
+                        android:id="@+id/passwordEditTxtView"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/send_et_height"
+                        android:layout_marginBottom="@dimen/layout_margin"
+                        android:background="@drawable/restore_wallet_field_background"
+                        android:textSize="@dimen/text_size_small"
+                        android:paddingLeft="@dimen/padding_left"
+                        android:hint="@string/please_enter_your_wallet_password"
+                        android:text=""
+                        android:inputType="textPassword"
+                />
+
+            </LinearLayout>
 
         </LinearLayout>
 
-
-    </LinearLayout>
-
-
-    <LinearLayout android:layout_width="match_parent"
-                  android:layout_height="wrap_content"
-                  android:orientation="vertical"
-                  android:layout_marginLeft="@dimen/layout_margin_left"
-                  android:layout_marginRight="@dimen/layout_margin_left"
-                  android:layout_marginTop="@dimen/bottom_line_height">
-
-
-        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-                  android:textColor="@color/colorPrimary"
-                  android:text="@string/transaction_fee"
-                  android:textSize="@dimen/text_size"
-                  android:layout_marginBottom="@dimen/layout_margin_small"/>
-
-        <TextView android:layout_width="match_parent"
-                  android:layout_height="wrap_content"
-                  android:id="@+id/feeEditText"
-                  android:text="@string/please_enter_a_valid_fee"
-                  android:textSize="@dimen/text_size"
-                  android:textColor="@color/darkRed"
-        />
-
-
-    </LinearLayout>
-
-
-    <LinearLayout android:layout_width="match_parent"
-                  android:layout_height="wrap_content"
-                  android:orientation="vertical"
-                  android:layout_marginLeft="@dimen/layout_margin_left"
-                  android:layout_marginRight="@dimen/layout_margin_left"
-                  android:layout_marginTop="@dimen/bottom_line_height">
-
-
-        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
-                  android:textColor="@color/colorPrimary"
-                  android:text="Wallet Password"
-                  android:textSize="@dimen/text_size"
-                  android:layout_marginBottom="@dimen/layout_margin_small"/>
-
-        <EditText
-                android:id="@+id/passwordEditTxtView"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/send_et_height"
-                android:background="@drawable/restore_wallet_field_background"
-                android:textSize="@dimen/text_size_small"
-                android:paddingLeft="@dimen/padding_left"
-                android:hint="@string/please_enter_your_wallet_password"
-                android:text=""
-                android:inputType="textPassword"
-        />
-
-
-    </LinearLayout>
-
+    </ScrollView>
 
     <LinearLayout android:layout_width="match_parent"
                   android:layout_height="wrap_content"
@@ -163,7 +171,7 @@
                   android:layout_marginTop="@dimen/layout_margin_left"
                   android:layout_marginBottom="@dimen/layout_margin"
                   android:weightSum="2">
-        />
+
         <Button
                 android:id="@+id/cancelBtn"
                 android:layout_width="wrap_content"
