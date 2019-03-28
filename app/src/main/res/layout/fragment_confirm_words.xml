@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              xmlns:tools="http://schemas.android.com/tools" android:orientation="vertical"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent"
-              android:background="@color/whiteColor"
-              android:id="@+id/linearLayout"
-android:clickable="true"
-android:focusable="true">
+<LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools" android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/whiteColor"
+        android:id="@+id/linearLayout"
+        android:clickable="true"
+        android:focusable="true">
 
     <android.support.v7.widget.Toolbar
             android:layout_width="match_parent"
@@ -36,6 +37,12 @@ android:focusable="true">
 
     </android.support.v7.widget.Toolbar>
 
+    <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/wallet_scrollview_height"
+            android:layout_marginTop="@dimen/layout_margin_top_large"
+            >
+
     <LinearLayout android:layout_width="match_parent"
                   android:layout_height="match_parent"
                   android:orientation="vertical">
@@ -47,6 +54,7 @@ android:focusable="true">
                   android:textSize="@dimen/text_size"
                   android:layout_marginLeft="@dimen/layout_margin_left"
                   android:layout_marginTop="@dimen/layout_margin_top"
+                  android:paddingLeft="@dimen/padding_left"
         />
 
         <EditText
@@ -68,6 +76,7 @@ android:focusable="true">
                 android:textSize="@dimen/text_size"
                 android:layout_marginLeft="@dimen/layout_margin_left"
                 android:layout_marginTop="@dimen/layout_margin"
+                android:paddingLeft="@dimen/padding_left"
         />
 
         <EditText
@@ -90,6 +99,7 @@ android:focusable="true">
                 android:textSize="@dimen/text_size"
                 android:layout_marginTop="@dimen/layout_margin"
                 android:layout_marginLeft="@dimen/layout_margin_left"
+                android:paddingLeft="@dimen/padding_left"
         />
 
         <EditText
@@ -102,17 +112,20 @@ android:focusable="true">
                 android:paddingLeft="@dimen/padding_left"
                 android:textSize="@dimen/text_size"/>
 
-        <Button
-                android:id="@+id/btn_confirm"
-                android:layout_width="@dimen/button_width"
-                android:layout_height="@dimen/edittext_height"
-                android:layout_gravity="center"
-                android:text="@string/confirm"
-                android:textColor="@color/whiteColor"
-                android:textAllCaps="false"
-                android:layout_marginTop="@dimen/layout_margin_top"
-                android:background="@drawable/login_btn_background"
-        />
-        <include layout="@layout/boottombar"/>
     </LinearLayout>
+    </ScrollView>
+
+
+    <Button
+            android:id="@+id/btn_confirm"
+            android:layout_width="@dimen/button_width"
+            android:layout_height="@dimen/edittext_height"
+            android:layout_gravity="center"
+            android:text="@string/confirm"
+            android:textColor="@color/whiteColor"
+            android:textAllCaps="false"
+            android:layout_marginTop="@dimen/layout_margin"
+            android:background="@drawable/login_btn_background"
+    />
+    <include layout="@layout/boottombar"/>
 </LinearLayout>
