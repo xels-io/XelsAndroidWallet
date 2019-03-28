@@ -25,7 +25,7 @@ interface ApiInterface {
     @POST(AppConstance.postAPIResponse)
     fun makeTransaction(
         @Query("URL") url: String, @Query("walletName") name: String, @Query("accountName") accName: String,
-        @Query("destinationAddress") address: String, @Query("amount") amount: String, @Query(
+        @Query("recipients[0].[destinationAddress]") address: String, @Query("recipients[0].[amount]") amount: String, @Query(
             "feeAmount"
         ) feeAmount: String, @Query(
             "allowUnconfirmed"
@@ -68,8 +68,8 @@ interface ApiInterface {
     @GET(AppConstance.getAPIResponse)
     fun getEstimateTax(
         @Query("URL") url: String, @Query("walletName") walletName: String, @Query("accountName") accName: String, @Query(
-            "destinationAddress"
-        ) destinationAddress: String, @Query("amount") amount: String, @Query(
+            "recipients[0].[destinationAddress]"
+        ) destinationAddress: String, @Query("recipients[0].[amount]") amount: String, @Query(
             "feeType"
         ) type: String, @Query("allowUnconfirmed") allowUn: Boolean
     ): Call<FeeResponseApi>

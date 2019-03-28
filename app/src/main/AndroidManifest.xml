@@ -20,7 +20,7 @@
 
 
     >
-        <activity android:name=".activity.LoginActivity"
+        <activity android:name="io.xels.xelsandroidapp.view.activity.LoginActivity"
                   android:screenOrientation="portrait"
         >
             <intent-filter>
@@ -29,20 +29,20 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".activity.BaseActivity"
+        <activity android:name="io.xels.xelsandroidapp.view.activity.BaseActivity"
                   android:screenOrientation="portrait"
 
         />
-        <activity android:name=".activity.NewScanner"
+        <activity android:name="io.xels.xelsandroidapp.view.activity.NewScanner"
                   android:screenOrientation="portrait"
         />
-        <activity android:name=".activity.ScannerAcitivity"
+        <activity android:name="io.xels.xelsandroidapp.view.activity.ScannerAcitivity"
                   android:screenOrientation="portrait"
         />
-        <activity android:name=".activity.RestoreWalletActivity"
+        <activity android:name="io.xels.xelsandroidapp.view.activity.RestoreWalletActivity"
                   android:screenOrientation="portrait"
         />
-        <activity android:name=".activity.CreateWalletActivity"
+        <activity android:name="io.xels.xelsandroidapp.view.activity.CreateWalletActivity"
                   android:screenOrientation="portrait"
         />
     </application>

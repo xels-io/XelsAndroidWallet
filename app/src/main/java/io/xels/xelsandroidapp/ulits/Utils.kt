@@ -2,17 +2,13 @@ package io.xels.xelsandroidapp.ulits
 
 import android.content.Context
 import android.content.Intent
-import io.xels.xelsandroidapp.activity.LoginActivity
+import io.xels.xelsandroidapp.view.activity.LoginActivity
 import java.util.*
 import android.content.ClipData
 import android.content.ClipboardManager
 import android.support.v4.app.FragmentActivity
 import android.widget.Toast
 import com.kaopiz.kprogresshud.KProgressHUD
-import retrofit2.Response
-import com.google.gson.GsonBuilder
-import io.xels.xelsandroidapp.response_model.ErrorApiResponse
-import io.xels.xelsandroidapp.retrofit.ApiClient.gson
 import android.net.NetworkInfo
 import android.net.ConnectivityManager
 
