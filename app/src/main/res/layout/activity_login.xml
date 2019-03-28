@@ -11,50 +11,66 @@
             android:layout_height="wrap_content"
             tools:context=".view.activity.LoginActivity"
             android:orientation="vertical"
-            android:background="@color/whiteColor">
+            android:background="@color/whiteColor"
+            android:weightSum="6">
 
         <android.support.v7.widget.Toolbar
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/toolbar_margin"
+                android:layout_weight="1"
                 android:background="@color/colorPrimary"
                 android:id="@+id/toolbar">
             <include layout="@layout/simple_toolbar"/>
         </android.support.v7.widget.Toolbar>
 
-        <EditText
-                android:id="@+id/walletEditTxt"
+        <ScrollView
                 android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:hint="@string/choose_a_waller"
-                android:textColor="@color/blackColor"
-                android:layout_marginLeft="@dimen/layout_margin_left"
-                android:layout_marginRight="@dimen/layout_margin_left"
-                android:layout_marginBottom="@dimen/layout_margin_left"
-                android:layout_marginTop="@dimen/layout_margin_top"
-                android:background="@drawable/login_text_background"
-                android:textSize="15sp"
-                android:paddingStart="10dp"
-        />
-        <EditText
-                android:id="@+id/passwordEditTxt"
-                android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:layout_marginLeft="@dimen/layout_margin_left"
-                android:layout_marginRight="@dimen/layout_margin_left"
-                android:layout_marginBottom="@dimen/layout_margin_left"
-                android:hint="Enter you password"
-                android:textColor="@color/blackColor"
-                android:textSize="15sp"
-                android:paddingStart="10dp"
-                android:background="@drawable/login_text_background"
-                android:inputType="textPassword"
-        />
+                android:layout_height="@dimen/login_scrollview_height"
+                android:layout_weight="3">
+
+            <LinearLayout android:layout_width="match_parent"
+                          android:layout_height="match_parent"
+                          android:orientation="vertical">
+
+                <EditText
+                        android:id="@+id/walletEditTxt"
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        android:hint="@string/choose_a_wallet"
+                        android:textColor="@color/blackColor"
+                        android:layout_marginLeft="@dimen/layout_margin_left"
+                        android:layout_marginRight="@dimen/layout_margin_left"
+                        android:layout_marginBottom="@dimen/layout_margin_left"
+                        android:layout_marginTop="@dimen/layout_margin_top"
+                        android:background="@drawable/login_text_background"
+                        android:textSize="15sp"
+                        android:paddingStart="10dp"
+                />
+                <EditText
+                        android:id="@+id/passwordEditTxt"
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        android:layout_marginLeft="@dimen/layout_margin_left"
+                        android:layout_marginRight="@dimen/layout_margin_left"
+                        android:layout_marginBottom="@dimen/layout_margin_left"
+                        android:hint="@string/enter_your_password"
+                        android:textColor="@color/blackColor"
+                        android:textSize="15sp"
+                        android:paddingStart="10dp"
+                        android:background="@drawable/login_text_background"
+                        android:inputType="textPassword"
+                />
+
+            </LinearLayout>
 
 
-        <Button android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+        </ScrollView>
+        <Button
                 android:id="@+id/decryptBtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:text="@string/decrypt"
                 android:textSize="@dimen/toolbar_headline_text_size"
                 android:textColor="@color/whiteColor"
@@ -72,15 +88,16 @@
             android:background="@color/colorPrimary"
             android:layout_alignParentBottom="true"
             android:orientation="horizontal"
+            android:layout_weight="1"
             android:weightSum="2">
 
         <Button
                 android:id="@+id/restoreWalletBtn"
                 android:layout_width="@dimen/dp0"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/layout_margin_small"
                 android:layout_marginTop="@dimen/layout_margin_small"
                 android:layout_marginBottom="@dimen/layout_margin_small"
+                android:layout_marginLeft="@dimen/layout_margin_small"
                 android:text="@string/restore"
                 android:textSize="@dimen/toolbar_headline_text_size"
                 android:textColor="@color/colorPrimary"
@@ -91,6 +108,7 @@
 
         />
         <Button
+                android:id="@+id/btn_create_wallet"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/layout_margin_small"
@@ -104,7 +122,6 @@
                 android:layout_gravity="center"
                 android:background="@drawable/background_rectangle_white"
                 android:layout_weight="1"
-                android:id="@+id/btn_create_wallet"
         />
 
     </LinearLayout>
