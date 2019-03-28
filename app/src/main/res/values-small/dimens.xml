@@ -15,7 +15,7 @@
     <dimen name="layout_margin_top">72dp</dimen>
     <dimen name="layout_margin_top_large">126dp</dimen>
     <dimen name="edittext_height">36dp</dimen>
-    <dimen name="padding_left">12dp</dimen>
+    <dimen name="padding_left">8dp</dimen>
     <dimen name="button_width">186dp</dimen>
     <dimen name="text_size_title">21sp</dimen>
     <dimen name="text_size_small">9sp</dimen>
@@ -36,6 +36,7 @@
     <dimen name="tv_margin_top">20dp</dimen>
     <dimen name="qr_image_size">98dp</dimen>
     <dimen name="send_et_height">28dp</dimen>
-    <dimen name="login_scrollview_height">240dp</dimen>
+    <dimen name="login_scrollview_height">176dp</dimen>
+    <dimen name="wallet_scrollview_height">200dp</dimen>
 
 </resources>

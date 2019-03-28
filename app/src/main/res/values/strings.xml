@@ -30,7 +30,7 @@
     <string name="login">Log In</string>
     <string name="name">Name</string>
     <string name="restore_wallet">Restore wallet</string>
-    <string name="earliiest_possible_creation_date">Earliiest Possible Creation Date</string>
+    <string name="earliest_possible_creation_date">Earliest Possible Creation Date</string>
     <string name="secret_words">Secret Words</string>
     <string name="password">Password</string>
     <string name="enter_a_password">Enter a password</string>

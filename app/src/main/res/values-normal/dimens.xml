@@ -13,9 +13,9 @@
     <dimen name="dashboard_title_text_size">24sp</dimen>
     <dimen name="layout_margin_top_small">57dp</dimen>
     <dimen name="layout_margin_top">30dp</dimen>
-    <dimen name="layout_margin_top_large">100dp</dimen>
+    <dimen name="layout_margin_top_large">30dp</dimen>
     <dimen name="edittext_height">45dp</dimen>
-    <dimen name="padding_left">15dp</dimen>
+    <dimen name="padding_left">10dp</dimen>
     <dimen name="button_width">232dp</dimen>
     <dimen name="text_size_title">26sp</dimen>
     <dimen name="text_size_small">11sp</dimen>
@@ -37,5 +37,6 @@
     <dimen name="qr_image_size">122dp</dimen>
     <dimen name="send_et_height">35dp</dimen>
     <dimen name="login_scrollview_height">220dp</dimen>
+    <dimen name="wallet_scrollview_height">305dp</dimen>
 
 </resources>
