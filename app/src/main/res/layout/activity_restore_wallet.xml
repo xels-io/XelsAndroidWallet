@@ -32,6 +32,7 @@
                       android:textColor="@color/blackColor"
                       android:textSize="@dimen/text_size"
                       android:layout_marginLeft="@dimen/layout_margin_left"
+                      android:layout_marginBottom="@dimen/layout_margin_small"
                       android:paddingLeft="@dimen/padding_left"/>
 
 
@@ -53,6 +54,7 @@
                     android:layout_marginLeft="@dimen/layout_margin_left"
                     android:layout_marginRight="@dimen/layout_margin_left"
                     android:layout_marginTop="@dimen/layout_margin"
+                    android:layout_marginBottom="@dimen/layout_margin_small"
                     android:paddingLeft="@dimen/padding_left"
                     android:textSize="@dimen/text_size"
                     android:text="@string/earliest_possible_creation_date"
@@ -78,6 +80,7 @@
                       android:layout_marginLeft="@dimen/layout_margin_left"
                       android:layout_marginRight="@dimen/layout_margin_left"
                       android:layout_marginTop="@dimen/layout_margin"
+                      android:layout_marginBottom="@dimen/layout_margin_small"
                       android:paddingLeft="@dimen/padding_left"
                       android:textSize="@dimen/text_size"
                       android:text="@string/secret_words"
@@ -100,6 +103,7 @@
                     android:layout_marginLeft="@dimen/layout_margin_left"
                     android:layout_marginRight="@dimen/layout_margin_left"
                     android:layout_marginTop="@dimen/layout_margin"
+                    android:layout_marginBottom="@dimen/layout_margin_small"
                     android:paddingLeft="@dimen/padding_left"
                     android:textSize="@dimen/text_size"
                     android:text="@string/password"
