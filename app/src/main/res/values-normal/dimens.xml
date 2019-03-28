@@ -34,7 +34,7 @@
     <dimen name="dp0">0dp</dimen>
     <dimen name="toolbar_margin">-10dp</dimen>
     <dimen name="tv_margin_top">20dp</dimen>
-    <dimen name="qr_image_size">122dp</dimen>
+    <dimen name="qr_image_size">140dp</dimen>
     <dimen name="send_et_height">35dp</dimen>
     <dimen name="login_scrollview_height">220dp</dimen>
     <dimen name="wallet_scrollview_height">305dp</dimen>
