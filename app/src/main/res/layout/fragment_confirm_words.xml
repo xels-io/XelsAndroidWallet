@@ -28,7 +28,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textSize="20sp"
-                    android:text="CONFIRM WORDS"
+                    android:text="@string/confirm_words"
                     android:gravity="center"
                     android:textColor="@color/whiteColor"
             />
@@ -41,95 +41,100 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/layout_margin_top_large"
-            >
+    >
 
-    <LinearLayout android:layout_width="match_parent"
-                  android:layout_height="match_parent"
-                  android:orientation="vertical">
+        <LinearLayout android:layout_width="match_parent"
+                      android:layout_height="match_parent"
+                      android:orientation="vertical"
+                      android:background="@color/whiteColor">
 
-        <TextView android:layout_width="wrap_content"
-                  android:layout_height="wrap_content"
-                  android:text="@string/word_number_4"
-                  android:textColor="@color/blackColor"
-                  android:textSize="@dimen/text_size"
-                  android:layout_marginLeft="@dimen/layout_margin_left"
-                  android:layout_marginTop="@dimen/layout_margin_top"
-                  android:layout_marginBottom="@dimen/layout_margin_small"
-                  android:paddingLeft="@dimen/padding_left"
-        />
+            <TextView android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:text="@string/word_number_4"
+                      android:textColor="@color/blackColor"
+                      android:textSize="@dimen/text_size"
+                      android:layout_marginLeft="@dimen/layout_margin_left"
+                      android:layout_marginTop="@dimen/layout_margin_top"
+                      android:layout_marginBottom="@dimen/layout_margin_small"
+                      android:paddingLeft="@dimen/padding_left"
+            />
 
-        <EditText
-                android:id="@+id/et_word_no_4"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/edittext_height"
-                android:background="@drawable/restore_wallet_field_background"
-                android:layout_marginLeft="@dimen/layout_margin_left"
-                android:layout_marginRight="@dimen/layout_margin_left"
-                android:paddingLeft="@dimen/padding_left"
-                android:textSize="@dimen/text_size"
-        />
+            <EditText
+                    android:id="@+id/et_word_no_4"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/edittext_height"
+                    android:background="@drawable/restore_wallet_field_background"
+                    android:layout_marginLeft="@dimen/layout_margin_left"
+                    android:layout_marginRight="@dimen/layout_margin_left"
+                    android:paddingLeft="@dimen/padding_left"
+                    android:textSize="@dimen/text_size"
+                    android:hint="@string/enter_word_4th_from_mnemonics"
+            />
 
-        <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/word_number_8"
-                android:textColor="@color/blackColor"
-                android:textSize="@dimen/text_size"
-                android:layout_marginLeft="@dimen/layout_margin_left"
-                android:layout_marginTop="@dimen/layout_margin"
-                android:layout_marginBottom="@dimen/layout_margin_small"
-                android:paddingLeft="@dimen/padding_left"
-        />
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/word_number_8"
+                    android:textColor="@color/blackColor"
+                    android:textSize="@dimen/text_size"
+                    android:layout_marginLeft="@dimen/layout_margin_left"
+                    android:layout_marginTop="@dimen/layout_margin"
+                    android:layout_marginBottom="@dimen/layout_margin_small"
+                    android:paddingLeft="@dimen/padding_left"
+            />
 
-        <EditText
-                android:id="@+id/et_word_no_8"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/edittext_height"
-                android:background="@drawable/restore_wallet_field_background"
-                android:layout_marginLeft="@dimen/layout_margin_left"
-                android:layout_marginRight="@dimen/layout_margin_left"
-                android:paddingLeft="@dimen/padding_left"
-                android:gravity="center_vertical"
-                android:textSize="@dimen/text_size"
-        />
+            <EditText
+                    android:id="@+id/et_word_no_8"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/edittext_height"
+                    android:background="@drawable/restore_wallet_field_background"
+                    android:layout_marginLeft="@dimen/layout_margin_left"
+                    android:layout_marginRight="@dimen/layout_margin_left"
+                    android:paddingLeft="@dimen/padding_left"
+                    android:gravity="center_vertical"
+                    android:textSize="@dimen/text_size"
+                    android:hint="@string/enter_word_8th_from_mnemonics"
+            />
 
-        <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/word_number_12"
-                android:textColor="@color/blackColor"
-                android:textSize="@dimen/text_size"
-                android:layout_marginTop="@dimen/layout_margin"
-                android:layout_marginLeft="@dimen/layout_margin_left"
-                android:layout_marginBottom="@dimen/layout_margin_small"
-                android:paddingLeft="@dimen/padding_left"
-        />
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/word_number_12"
+                    android:textColor="@color/blackColor"
+                    android:textSize="@dimen/text_size"
+                    android:layout_marginTop="@dimen/layout_margin"
+                    android:layout_marginLeft="@dimen/layout_margin_left"
+                    android:layout_marginBottom="@dimen/layout_margin_small"
+                    android:paddingLeft="@dimen/padding_left"
+            />
 
-        <EditText
-                android:id="@+id/et_word_no_12"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/edittext_height"
-                android:background="@drawable/restore_wallet_field_background"
-                android:layout_marginLeft="@dimen/layout_margin_left"
-                android:layout_marginRight="@dimen/layout_margin_left"
-                android:layout_marginBottom="@dimen/layout_margin_top_large"
-                android:paddingLeft="@dimen/padding_left"
-                android:textSize="@dimen/text_size"/>
+            <EditText
+                    android:id="@+id/et_word_no_12"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/edittext_height"
+                    android:background="@drawable/restore_wallet_field_background"
+                    android:layout_marginLeft="@dimen/layout_margin_left"
+                    android:layout_marginRight="@dimen/layout_margin_left"
+                    android:layout_marginBottom="@dimen/layout_margin_top_large"
+                    android:paddingLeft="@dimen/padding_left"
+                    android:textSize="@dimen/text_size"
+                    android:hint="@string/enter_word_12th_from_mnemonics"/>
 
 
-        <Button
-                android:id="@+id/btn_confirm"
-                android:layout_width="@dimen/button_width"
-                android:layout_height="@dimen/edittext_height"
-                android:layout_gravity="center"
-                android:text="@string/confirm"
-                android:textColor="@color/whiteColor"
-                android:textAllCaps="false"
-                android:layout_marginTop="@dimen/layout_margin_top_large"
-                android:background="@drawable/login_btn_background"
-        />
+            <Button
+                    android:id="@+id/btn_confirm"
+                    android:layout_width="@dimen/button_width"
+                    android:layout_height="@dimen/edittext_height"
+                    android:layout_gravity="center"
+                    android:text="@string/confirm"
+                    android:textColor="@color/whiteColor"
+                    android:textAllCaps="false"
+                    android:layout_marginTop="@dimen/layout_margin_top_large"
+                    android:background="@drawable/login_btn_background"
 
-    </LinearLayout>
+            />
+
+        </LinearLayout>
     </ScrollView>
 
     <include layout="@layout/boottombar"/>

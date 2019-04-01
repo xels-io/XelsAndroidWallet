@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools" android:orientation="vertical"
+        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/whiteColor"
@@ -21,7 +21,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textSize="20sp"
-                    android:text="CREATE A WALLET"
+                    android:text="@string/create_a_wallet"
                     android:gravity="center"
                     android:textColor="@color/whiteColor"/>
         </LinearLayout>
@@ -52,7 +52,8 @@
                     android:layout_marginLeft="@dimen/layout_margin_left"
                     android:layout_marginRight="@dimen/layout_margin_left"
                     android:paddingLeft="@dimen/padding_left"
-                    android:textSize="@dimen/text_size"/>
+                    android:textSize="@dimen/text_size"
+                    android:hint="@string/enter_a_wallet_name"/>
             <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -73,7 +74,8 @@
                     android:paddingLeft="@dimen/padding_left"
                     android:gravity="center_vertical"
                     android:textSize="@dimen/text_size"
-                    android:inputType="textPassword"/>
+                    android:inputType="textPassword"
+                    android:hint="@string/enter_a_password"/>
             <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -94,7 +96,8 @@
                     android:layout_marginRight="@dimen/layout_margin_left"
                     android:paddingLeft="@dimen/padding_left"
                     android:textSize="@dimen/text_size"
-                    android:inputType="textPassword"/>
+                    android:inputType="textPassword"
+                    android:hint="@string/confirm_password"/>
             <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

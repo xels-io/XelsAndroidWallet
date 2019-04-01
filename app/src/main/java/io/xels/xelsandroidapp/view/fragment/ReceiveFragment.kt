@@ -31,6 +31,14 @@ class ReceiveFragment : Fragment(), View.OnClickListener {
     override fun onClick(v: View?) {
         when (v?.id) {
             R.id.copyToClipBoardBtn -> Utils.copyToClipBoard(activity, addressTxtView.text.toString(), "hello")
+
+
+            R.id.showAllAddressTxtView ->{
+                fragment=ShowAllAddressFragment()
+                activity?.supportFragmentManager?.beginTransaction()?.replace(R.id.frameLayout, fragment as ShowAllAddressFragment,
+                    "ShowAllAddressFragment")?.addToBackStack("ShowAllAddressFragment")?.commit()
+            }
+
         }
 
 
@@ -40,6 +48,7 @@ class ReceiveFragment : Fragment(), View.OnClickListener {
     var apiInterface: ApiInterface? = null;
     var qrEcode: QRGEncoder? = null
     var bitmap: Bitmap? = null
+    var fragment: Fragment? = null
 
 
     var toolBarControll: ToolBarControll? = null
@@ -62,6 +71,7 @@ class ReceiveFragment : Fragment(), View.OnClickListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         copyToClipBoardBtn.setOnClickListener(this)
+        showAllAddressTxtView.setOnClickListener(this)
         apiInterface = ApiClient.getClient()?.create(ApiInterface::class.java)
 
         apiInterface?.getUnUsedAddress(
@@ -87,6 +97,7 @@ class ReceiveFragment : Fragment(), View.OnClickListener {
                     ) {
 
                         if (response.isSuccessful) {
+                            addressLayout.visibility = View.VISIBLE
                             addressTxtView.text = response.body()?.innerMsg
 
                             val manager = activity?.getSystemService(WINDOW_SERVICE) as WindowManager?
@@ -99,7 +110,7 @@ class ReceiveFragment : Fragment(), View.OnClickListener {
                             smallerDimension = smallerDimension * 3 / 4
 
                             qrEcode =
-                                    QRGEncoder(response.body()?.innerMsg, null, QRGContents.Type.TEXT, smallerDimension)
+                                QRGEncoder(response.body()?.innerMsg, null, QRGContents.Type.TEXT, smallerDimension)
 
                             bitmap = qrEcode?.encodeAsBitmap()
 

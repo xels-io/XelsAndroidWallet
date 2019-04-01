@@ -69,6 +69,8 @@ class DashBoardFragment : Fragment() {
             override fun onFailure(call: Call<GetBalanceApiResponse?>, t: Throwable) {
                 println(t.printStackTrace())
                 Utils.showError(activity)
+                toolBarControll?.showDialog(false)
+
 
             }
 
@@ -122,6 +124,9 @@ class DashBoardFragment : Fragment() {
                         })
 
 
+                }
+                else{
+                    toolBarControll?.showDialog(false)
                 }
 
 

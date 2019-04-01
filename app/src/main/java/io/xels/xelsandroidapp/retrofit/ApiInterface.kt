@@ -35,15 +35,13 @@ interface ApiInterface {
     ): Call<TransectionApiResponse>
 
 
-
     @POST(AppConstance.postAPIResponse)
     fun createWallet(
-        @Query("URL") url: String, @Query("folderPath") folderPath: String?, @Query("mnemonic") mnemonic: String?, @Query("name") name: String?,
+        @Query("URL") url: String, @Query("folderPath") folderPath: String?, @Query("mnemonic") mnemonic: String?, @Query(
+            "name"
+        ) name: String?,
         @Query("passphrase") passphrase: String?, @Query("password") password: String?
     ): Call<WordResponseModel>
-
-
-
 
 
     @GET(AppConstance.getAPIResponse)
@@ -51,6 +49,9 @@ interface ApiInterface {
 
     @GET(AppConstance.getAPIResponse)
     fun getBalance(@Query("URL") url: String, @Query("walletName") walletName: String, @Query("accountName") accName: String): Call<GetBalanceApiResponse?>
+
+    @GET(AppConstance.getAPIResponse)
+    fun getAllAddress(@Query("URL") url: String, @Query("walletName") walletName: String, @Query("accountName") accName: String): Call<AllAddressApiResponse?>
 
 
     @GET(AppConstance.getAPIResponse)

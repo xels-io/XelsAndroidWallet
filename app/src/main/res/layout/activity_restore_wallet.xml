@@ -22,8 +22,9 @@
         <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginTop="@dimen/layout_margin_top_large"
+                android:layout_marginTop="50dp"
                 android:orientation="vertical"
+                android:background="@color/whiteColor"
         >
 
             <TextView android:layout_width="wrap_content"
@@ -33,7 +34,9 @@
                       android:textSize="@dimen/text_size"
                       android:layout_marginLeft="@dimen/layout_margin_left"
                       android:layout_marginBottom="@dimen/layout_margin_small"
-                      android:paddingLeft="@dimen/padding_left"/>
+                      android:paddingLeft="@dimen/padding_left"
+                      android:maxLines="1"
+            />
 
 
             <EditText
@@ -72,7 +75,10 @@
                     android:background="@drawable/restore_wallet_field_background"
                     android:hint="@string/select_the_date_your_wallet_was_created"
                     android:gravity="center_vertical"
-                    android:textSize="@dimen/text_size"/>
+                    android:textSize="@dimen/text_size"
+                    android:maxLines="1"
+
+            />
 
 
             <TextView android:layout_width="wrap_content"
@@ -96,6 +102,8 @@
                     android:paddingLeft="@dimen/padding_left"
                     android:background="@drawable/restore_wallet_field_background"
                     android:hint="@string/enter_your_secret_words"
+                    android:maxLines="1"
+
             />
             <TextView
                     android:layout_width="wrap_content"
@@ -123,6 +131,8 @@
                     android:background="@drawable/restore_wallet_field_background"
                     android:hint="@string/enter_a_password"
                     android:inputType="textPassword"
+                    android:maxLines="1"
+
             />
 
             <Button

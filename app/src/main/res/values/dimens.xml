@@ -14,7 +14,7 @@
     <dimen name="layout_margin_top_small">57dp</dimen>
     <dimen name="layout_margin_top">90dp</dimen>
     <dimen name="layout_margin_top_large">157dp</dimen>
-    <dimen name="edittext_height">45dp</dimen>
+    <dimen name="edittext_height">60dp</dimen>
     <dimen name="padding_left">10dp</dimen>
     <dimen name="button_width">232dp</dimen>
     <dimen name="text_size_title">26sp</dimen>
@@ -24,7 +24,7 @@
     <dimen name="btn_ok_text_size">20sp</dimen>
     <dimen name="btn_ok_width">150dp</dimen>
     <dimen name="btn_ok_height">38dp</dimen>
-    <dimen name="bottom_line_height">11dp</dimen>
+    <dimen name="bottom_line_height">15dp</dimen>
     <dimen name="wallet_margin_top">84dp</dimen>
     <dimen name="warning_margin_bottom">9dp</dimen>
     <dimen name="mnemonic_text_margin">22dp</dimen>

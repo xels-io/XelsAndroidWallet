@@ -11,8 +11,10 @@ import android.widget.Toast
 import com.kaopiz.kprogresshud.KProgressHUD
 import android.net.NetworkInfo
 import android.net.ConnectivityManager
-
-
+import com.google.gson.GsonBuilder
+import com.google.gson.JsonSyntaxException
+import io.xels.xelsandroidapp.response_model.ErrorApiResponse
+import java.io.IOException
 
 
 object Utils {
@@ -51,7 +53,7 @@ object Utils {
 
     fun showError(context: FragmentActivity?) {
 
-        Toast.makeText(context, "Something went wrong, PLease try later", Toast.LENGTH_LONG).show()
+        Toast.makeText(context, "Something went wrong, Please try later", Toast.LENGTH_LONG).show()
 
 
     }
@@ -63,23 +65,48 @@ object Utils {
             .setCancellable(true)
             .setAnimationSpeed(2)
             .setDimAmount(0.5f)
+            .setDimAmount(0.5f)
+            .setLabel("Loading...")
     }
 
-/*
-    fun handleErrorResponse(response: Response<Any>, context: FragmentActivity, code: Int) {
-        var error: ErrorApiResponse
-        gson = GsonBuilder().create()
+    fun handleErrorResponse(resonse: String, fragmentActivity: FragmentActivity, code: Int) {
 
-        error = ErrorApiResponse()
+        Toast.makeText(fragmentActivity, resonse, Toast.LENGTH_SHORT).show()
+
+        /*       when (code) {
 
 
-    }*/
+
+                       400 ->
+                       Toast.makeText(fragmentActivity, resonse, Toast.LENGTH_SHORT).show()
+                   401 ->
+                       Toast.makeText(fragmentActivity, resonse, Toast.LENGTH_SHORT).show()
+                   403 ->
+                       Toast.makeText(fragmentActivity, resonse, Toast.LENGTH_SHORT).show()
+                   404 ->
+                       Toast.makeText(fragmentActivity, resonse, Toast.LENGTH_SHORT).show()
+                   406 ->
+                       Toast.makeText(fragmentActivity, resonse, Toast.LENGTH_SHORT).show()
+                   500 ->
+                       Toast.makeText(fragmentActivity, resonse, Toast.LENGTH_SHORT).show()
+                   502 ->
+                       Toast.makeText(fragmentActivity, resonse, Toast.LENGTH_SHORT).show()
+                   404 ->
+                       Toast.makeText(fragmentActivity, resonse, Toast.LENGTH_SHORT).show()
+                   404 ->
+                       Toast.makeText(fragmentActivity, resonse, Toast.LENGTH_SHORT).show()
+                   404 ->
+                       Toast.makeText(fragmentActivity, resonse, Toast.LENGTH_SHORT).show()
+               }
+       */
+
+    }
 
     fun isNetworkAvailable(context: Context, typeNetworks: IntArray): Boolean {
         try {
             val connectivityManager = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
             for (typeNetwork in typeNetworks) {
-                val networkInfo =connectivityManager.getNetworkInfo(typeNetwork)
+                val networkInfo = connectivityManager.getNetworkInfo(typeNetwork)
                 if (networkInfo != null && networkInfo.state == NetworkInfo.State.CONNECTED) {
                     return true
                 }
@@ -90,4 +117,18 @@ object Utils {
 
         return false
     }
+
+
+/*    fun hideKeyBoard(activity: Activity) {
+        val inputMethodManager = activity.getSystemService(
+            Activity.INPUT_METHOD_SERVICE
+        ) as InputMethodManager
+        inputMethodManager.hideSoftInputFromWindow(
+            activity.currentFocus.windowToken, 0
+        )
+    }*/
+
 }
+
+
+

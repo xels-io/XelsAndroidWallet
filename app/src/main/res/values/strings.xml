@@ -57,6 +57,11 @@
         You will need both to recover youur wallet in your future.</string>
     <string name="warning">Warning !</string>
     <string name="create">Create</string>
-    <string name="mnemonics">MNEMONICS</string>
+    <string name="mnemonics">Mnemonics</string>
     <string name="enter_your_password">Enter your password</string>
+    <string name="enter_you_password">Enter you password</string>
+    <string name="enter_word_4th_from_mnemonics">Enter word 4th from mnemonics</string>
+    <string name="enter_word_8th_from_mnemonics">Enter word 8th from mnemonics</string>
+    <string name="enter_word_12th_from_mnemonics">Enter word 12th from mnemonics</string>
+    <string name="create_a_wallet">Create a wallet</string>
 </resources>
