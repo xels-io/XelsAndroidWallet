@@ -7,6 +7,9 @@ import io.xels.xelsandroidapp.R
 import io.xels.xelsandroidapp.ulits.AppConstance
 import io.xels.xelsandroidapp.ulits.PreferenceManager
 
+
+//Mashfi changes
+
 class SplashScreenActivity : Activity() {
     internal var thread: Thread?=null
 
