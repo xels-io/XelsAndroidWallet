@@ -6,7 +6,7 @@ class AppConstance {
 
     companion object {
         val STABLE_BASE_URL: String = "http://13.115.56.41:4000/"
-        val BASE_URL: String = "http://52.68.239.4:4000/"
+        val BASE_URL: String = "https://api.xels.io:2332"
         val ACCOUNT_NAME: String = "account 0"
 
         const val postAPIResponse: String = "PostAPIResponse"

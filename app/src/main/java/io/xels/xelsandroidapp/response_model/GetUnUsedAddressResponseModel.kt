@@ -8,5 +8,5 @@ data class GetUnUsedAddressResponseModel(
     @SerializedName("statusText")
     var statusText: String, // OK
     @SerializedName("InnerMsg")
-    var innerMsg: String // XZKjv5La7gvVLkNoAE9zrh5iXf23iwzkTC
+    var innerMsg: String? // XZKjv5La7gvVLkNoAE9zrh5iXf23iwzkTC
 )

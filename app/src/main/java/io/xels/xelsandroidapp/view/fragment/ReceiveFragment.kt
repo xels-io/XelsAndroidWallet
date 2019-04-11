@@ -100,21 +100,7 @@ class ReceiveFragment : Fragment(), View.OnClickListener {
                             addressLayout.visibility = View.VISIBLE
                             addressTxtView.text = response.body()?.innerMsg
 
-                            val manager = activity?.getSystemService(WINDOW_SERVICE) as WindowManager?
-                            val display = manager!!.defaultDisplay
-                            val point = Point()
-                            display.getSize(point)
-                            val width = point.x
-                            val height = point.y
-                            var smallerDimension = if (width < height) width else height
-                            smallerDimension = smallerDimension * 3 / 4
-
-                            qrEcode =
-                                QRGEncoder(response.body()?.innerMsg, null, QRGContents.Type.TEXT, smallerDimension)
-
-                            bitmap = qrEcode?.encodeAsBitmap()
-
-                            qrCode.setImageBitmap(bitmap)
+                            showQrCode(response)
                             toolBarControll?.showDialog(false)
 
 
@@ -129,6 +115,24 @@ class ReceiveFragment : Fragment(), View.OnClickListener {
                 })
 
 
+    }
+
+    private fun showQrCode(response: Response<GetUnUsedAddressResponseModel?>) {
+        val manager = activity?.getSystemService(WINDOW_SERVICE) as WindowManager?
+        val display = manager!!.defaultDisplay
+        val point = Point()
+        display.getSize(point)
+        val width = point.x
+        val height = point.y
+        var smallerDimension = if (width < height) width else height
+        smallerDimension = smallerDimension * 3 / 4
+
+        qrEcode =
+            QRGEncoder(response.body()?.innerMsg, null, QRGContents.Type.TEXT, smallerDimension)
+
+        bitmap = qrEcode?.encodeAsBitmap()
+
+        qrCode.setImageBitmap(bitmap)
     }
 
     override fun onAttach(context: Context?) {

@@ -1,5 +1,6 @@
 package io.xels.xelsandroidapp.ulits
 
+import android.app.AlertDialog
 import android.content.Context
 import android.content.Intent
 import io.xels.xelsandroidapp.view.activity.LoginActivity
@@ -11,10 +12,22 @@ import android.widget.Toast
 import com.kaopiz.kprogresshud.KProgressHUD
 import android.net.NetworkInfo
 import android.net.ConnectivityManager
-import com.google.gson.GsonBuilder
-import com.google.gson.JsonSyntaxException
-import io.xels.xelsandroidapp.response_model.ErrorApiResponse
-import java.io.IOException
+import android.support.v7.widget.CardView
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import android.widget.Button
+import android.widget.LinearLayout
+import kotlinx.android.synthetic.main.address_dialog.view.*
+import kotlinx.android.synthetic.main.fragment_recieve.*
+import android.support.v4.content.ContextCompat.startActivity
+import android.R
+import android.graphics.Bitmap
+import android.graphics.Point
+import android.view.WindowManager
+import androidmads.library.qrgenearator.QRGContents
+import androidmads.library.qrgenearator.QRGEncoder
+import kotlinx.android.synthetic.main.show_qr_code.view.*
 
 
 object Utils {
@@ -44,7 +57,7 @@ object Utils {
     }
 
 
-    fun copyToClipBoard(context: FragmentActivity?, msg: String, label: String) {
+    fun copyToClipBoard(context: FragmentActivity?, msg: String?, label: String) {
         val clipboard = context?.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager?
         val clip = ClipData.newPlainText(label, msg)
         clipboard!!.setPrimaryClip(clip)
@@ -127,6 +140,77 @@ object Utils {
             activity.currentFocus.windowToken, 0
         )
     }*/
+
+    fun showOptionDialog(activity: FragmentActivity?, address: String?) {
+        val mDialogView = LayoutInflater.from(activity).inflate(io.xels.xelsandroidapp.R.layout.address_dialog, null)
+        //AlertDialogBuilder
+        val mBuilder = AlertDialog.Builder(activity)
+            .setView(mDialogView)
+        //show dialog
+        val mAlertDialog = mBuilder.show()
+        //login button click of custom layout
+        mDialogView.shareBtn.setOnClickListener {
+            //dismiss dialog
+            mAlertDialog.dismiss()
+            shareInformation(activity, address)
+
+        }
+        //cancel button click of custom layout
+        mDialogView.copyBtn.setOnClickListener {
+            //dismiss dialog
+            mAlertDialog.dismiss()
+            Utils.copyToClipBoard(activity, address, "hello")
+        }
+
+
+        mDialogView.qrCodeBtn.setOnClickListener {
+            //dismiss dialog
+            mAlertDialog.dismiss()
+            showQrCode(activity, address)
+
+
+        }
+    }
+
+    private fun showQrCode(activity: FragmentActivity?, address: String?) {
+        var qrEcode: QRGEncoder? = null
+        var bitmap: Bitmap? = null
+        val manager = activity?.getSystemService(Context.WINDOW_SERVICE) as WindowManager?
+        val display = manager!!.defaultDisplay
+        val point = Point()
+        display.getSize(point)
+        val width = point.x
+        val height = point.y
+        var smallerDimension = if (width < height) width else height
+        smallerDimension = smallerDimension * 3 / 4
+
+        qrEcode = QRGEncoder(address, null, QRGContents.Type.TEXT, smallerDimension)
+
+        bitmap = qrEcode?.encodeAsBitmap()
+
+
+        val mDialogView = LayoutInflater.from(activity).inflate(io.xels.xelsandroidapp.R.layout.show_qr_code, null)
+        //AlertDialogBuilder
+        val mBuilder = AlertDialog.Builder(activity)
+            .setView(mDialogView)
+        //show dialog
+        val mAlertDialog = mBuilder.show()
+        //login button click of custom layout
+        mDialogView.qrCode.setImageBitmap(bitmap)
+
+        mDialogView.closeBtn.setOnClickListener(View.OnClickListener {
+            mAlertDialog.dismiss()
+        })
+    }
+
+
+    fun shareInformation(activity: FragmentActivity?, address: String?) {
+        val shareIntent = Intent(Intent.ACTION_SEND)
+        shareIntent.type = "text/plain"
+        shareIntent.putExtra(Intent.EXTRA_TEXT, address)
+        activity?.startActivity(Intent.createChooser(shareIntent, "Share address using"))
+    }
+
 
 }
 
