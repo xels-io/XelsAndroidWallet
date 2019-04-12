@@ -5,10 +5,7 @@ import android.os.Bundle
 import android.support.v4.app.FragmentActivity
 import android.support.v7.widget.Toolbar
 import android.view.View
-import android.widget.Button
-import android.widget.EditText
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.*
 import com.shagi.materialdatepicker.date.DatePickerFragmentDialog
 import io.xels.xelsandroidapp.R
 import io.xels.xelsandroidapp.response_model.LoadApiResponseModel
@@ -49,6 +46,9 @@ class RestoreWalletActivity : FragmentActivity(), View.OnClickListener {
             R.id.date -> {
                 showCalendar()
             }
+            R.id.layout -> {
+                Utils.hideKeyBoard(this@RestoreWalletActivity)
+            }
 
 
         }
@@ -80,6 +80,7 @@ class RestoreWalletActivity : FragmentActivity(), View.OnClickListener {
     var word: EditText? = null
     var password: EditText? = null
     var restoreBtn: Button? = null
+    var layout: LinearLayout? = null
     var apiInterface: ApiInterface? = null
     var month: Int = 0
     var typeNetwork: IntArray = intArrayOf(ConnectivityManager.TYPE_MOBILE, ConnectivityManager.TYPE_WIFI)
@@ -105,8 +106,11 @@ class RestoreWalletActivity : FragmentActivity(), View.OnClickListener {
         word = findViewById(R.id.words)
         password = findViewById(R.id.password)
         restoreBtn = findViewById(R.id.restoreBtn)
+        layout = findViewById(R.id.layout)
         restoreBtn?.setOnClickListener(this)
+        layout?.setOnClickListener(this)
         date?.setOnClickListener(this)
+
 
     }
 

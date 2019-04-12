@@ -2,7 +2,7 @@ package io.xels.xelsandroidapp.response_model
 
 import com.google.gson.annotations.SerializedName
 
-data class ErrorApiResponse(
+ data class ErrorApiResponse(
     @SerializedName("InnerMsg")
     val innerMsg: List<InnerMsg>,
     @SerializedName("statusCode")
@@ -12,9 +12,9 @@ data class ErrorApiResponse(
 ) {
     data class InnerMsg(
         @SerializedName("description")
-        val description: String,
+        val description: String, // System.Security.SecurityException: Invalid password (or invalid Network)   at Xels.Bitcoin.Features.Wallet.WalletManager.LoadWallet(String password, String name)   at Xels.Bitcoin.Features.Wallet.Controllers.WalletController.Load(WalletLoadRequest request)
         @SerializedName("message")
-        val message: String, // Can't send transaction: sending transaction requires at least one connection!
+        val message: String, // Wrong password, please try again.
         @SerializedName("status")
         val status: Int // 403
     )

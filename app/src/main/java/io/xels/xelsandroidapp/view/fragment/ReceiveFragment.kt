@@ -23,8 +23,14 @@ import retrofit2.Response
 import android.content.Context.WINDOW_SERVICE
 import android.graphics.Bitmap
 import android.graphics.Point
+import android.util.Log
 import android.view.WindowManager
 import io.xels.xelsandroidapp.interfaces.ToolBarControll
+import io.xels.xelsandroidapp.model.AddressGetModel
+import io.xels.xelsandroidapp.model.CallAddressModel
+import org.greenrobot.eventbus.EventBus
+import org.greenrobot.eventbus.Subscribe
+import org.greenrobot.eventbus.ThreadMode
 
 
 class ReceiveFragment : Fragment(), View.OnClickListener {
@@ -33,10 +39,12 @@ class ReceiveFragment : Fragment(), View.OnClickListener {
             R.id.copyToClipBoardBtn -> Utils.copyToClipBoard(activity, addressTxtView.text.toString(), "hello")
 
 
-            R.id.showAllAddressTxtView ->{
-                fragment=ShowAllAddressFragment()
-                activity?.supportFragmentManager?.beginTransaction()?.replace(R.id.frameLayout, fragment as ShowAllAddressFragment,
-                    "ShowAllAddressFragment")?.addToBackStack("ShowAllAddressFragment")?.commit()
+            R.id.showAllAddressTxtView -> {
+                fragment = ShowAllAddressFragment()
+                activity?.supportFragmentManager?.beginTransaction()?.replace(
+                    R.id.frameLayout, fragment as ShowAllAddressFragment,
+                    "ShowAllAddressFragment"
+                )?.addToBackStack("ShowAllAddressFragment")?.commit()
             }
 
         }
@@ -45,7 +53,7 @@ class ReceiveFragment : Fragment(), View.OnClickListener {
     }
 
 
-    var apiInterface: ApiInterface? = null;
+    var apiInterface: ApiInterface? = null
     var qrEcode: QRGEncoder? = null
     var bitmap: Bitmap? = null
     var fragment: Fragment? = null
@@ -57,8 +65,6 @@ class ReceiveFragment : Fragment(), View.OnClickListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        toolBarControll?.setTitle("Receive")
-        toolBarControll?.showDialog(true)
 
     }
 
@@ -70,6 +76,9 @@ class ReceiveFragment : Fragment(), View.OnClickListener {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        toolBarControll?.setTitle("Receive")
+        toolBarControll?.showShareBtn(true)
+        toolBarControll?.showDialog(true)
         copyToClipBoardBtn.setOnClickListener(this)
         showAllAddressTxtView.setOnClickListener(this)
         apiInterface = ApiClient.getClient()?.create(ApiInterface::class.java)
@@ -144,5 +153,23 @@ class ReceiveFragment : Fragment(), View.OnClickListener {
             throw IllegalArgumentException("Containing activity must implement OnSearchListener interface")
         }
     }
+
+    override fun onStart() {
+        super.onStart()
+        EventBus.getDefault().register(this)
+    }
+
+    override fun onStop() {
+        super.onStop()
+        EventBus.getDefault().unregister(this)
+
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    fun onMessageEvent(event: CallAddressModel) {
+        Utils.shareInformation(activity, addressTxtView.text.toString().trim())
+
+    }
+
 
 }

@@ -16,16 +16,16 @@
                 android:id="@+id/usedBtn"
                 android:layout_weight="1"
                 android:textAllCaps="false"
-                android:background="@color/colorPrimary"
-        android:textColor="@color/whiteColor"
-        android:layout_margin="10dp"/>
+                android:background="@drawable/login_btn_background"
+                android:textColor="@color/whiteColor"
+                android:layout_margin="10dp"/>
 
         <Button android:layout_width="wrap_content" android:layout_height="wrap_content"
                 android:text="@string/unused"
                 android:id="@+id/unusedBtn"
                 android:layout_weight="1"
                 android:textAllCaps="false"
-                android:background="@color/colorPrimary"
+                android:background="@drawable/login_btn_background"
                 android:textColor="@color/whiteColor"
                 android:layout_margin="10dp"/>
 
@@ -34,7 +34,7 @@
                 android:id="@+id/changedBtn"
                 android:layout_weight="1"
                 android:textAllCaps="false"
-                android:background="@color/colorPrimary"
+                android:background="@drawable/login_btn_background"
                 android:textColor="@color/whiteColor"
                 android:layout_margin="10dp"/>
 
@@ -43,7 +43,7 @@
 
     <TextView android:layout_width="match_parent" android:layout_height="match_parent"
               android:id="@+id/noData"
-              android:text="@string/you_have_no_transection_history"
+              android:text="@string/you_have_no_address_yet"
               android:gravity="center"
               android:textColor="@color/colorPrimary"
               android:textSize="15sp"

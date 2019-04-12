@@ -25,11 +25,11 @@ class ConfirmWordFragment : Fragment(), View.OnClickListener {
 
         when (v?.id) {
             R.id.btn_confirm -> {
-                if (te_word4?.text.toString().isEmpty() && te_word8?.text.toString().isEmpty() && te_word12?.text.toString().isEmpty()) {
+                if (te_word4?.text.toString().trim().isEmpty() && te_word8?.text.toString().trim().isEmpty() && te_word12?.text.toString().trim().isEmpty()) {
                     Toast.makeText(activity, "Field missing", Toast.LENGTH_SHORT).show()
                 } else {
 
-                    if (te_word4?.text.toString().equals(word4) && te_word8?.text.toString().equals(word8) && te_word12?.text.toString().equals(
+                    if (te_word4?.text.toString().trim().equals(word4) && te_word8?.text.toString().trim().equals(word8) && te_word12?.text.toString().trim().equals(
                             word12
                         )
                     ) {

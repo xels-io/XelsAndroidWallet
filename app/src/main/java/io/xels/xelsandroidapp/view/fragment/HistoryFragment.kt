@@ -36,7 +36,6 @@ class HistoryFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        toolBarControll?.showDialog(true)
 
     }
 
@@ -46,7 +45,8 @@ class HistoryFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        toolBarControll?.showDialog(true)
+        toolBarControll?.showShareBtn(false)
         toolBarControll?.setTitle("History")
 
         showHistory()
@@ -83,7 +83,7 @@ class HistoryFragment : Fragment() {
 
                 if (response.isSuccessful) {
 
-                    if (response.body()?.innerMsg?.history?.get(0)?.transactionsHistory?.size!=0) {
+                    if (response.body()?.innerMsg?.history?.get(0)?.transactionsHistory?.size != 0) {
                         historyRv.visibility = View.VISIBLE
                         noData.visibility = View.GONE
 
@@ -93,8 +93,7 @@ class HistoryFragment : Fragment() {
                         historyRv.setItemAnimator(DefaultItemAnimator())
                         historyRv.setAdapter(historyAdapter)
                         historyRv.setHasFixedSize(true)
-                    }
-                    else {
+                    } else {
                         historyRv.visibility = View.GONE
                         noData.visibility = View.VISIBLE
 

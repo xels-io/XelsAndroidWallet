@@ -6,17 +6,16 @@ import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.EditText
-import android.widget.Toast
+import android.widget.*
 import io.xels.xelsandroidapp.R
 import io.xels.xelsandroidapp.interfaces.ToolBarControll
+import io.xels.xelsandroidapp.ulits.Utils
 
 class CreateWalletFragment : Fragment(), View.OnClickListener {
     override fun onClick(v: View?) {
         when (v?.id) {
 
-            R.id.btn_create_wallet ->
+            R.id.btn_create_wallet -> {
                 if (name?.text.toString().isEmpty() && password?.text.toString().isEmpty() && confirmPassword?.text.toString().isEmpty()) {
                     Toast.makeText(activity, "Field missing", Toast.LENGTH_SHORT).show()
                 } else {
@@ -42,6 +41,11 @@ class CreateWalletFragment : Fragment(), View.OnClickListener {
                     }
 
                 }
+            }
+
+            R.id.linearLayout -> {
+                Utils.hideKeyBoard(activity)
+            }
 
 
         }
@@ -53,6 +57,7 @@ class CreateWalletFragment : Fragment(), View.OnClickListener {
     var password: EditText? = null
     var confirmPassword: EditText? = null
     var createWallet: Button? = null
+    var linearLayout: LinearLayout? = null
     lateinit var b: Bundle
     var toolBarControll: ToolBarControll? = null
 
@@ -75,7 +80,9 @@ class CreateWalletFragment : Fragment(), View.OnClickListener {
         password = view.findViewById(R.id.et_password)
         confirmPassword = view.findViewById(R.id.confirmPassord)
         createWallet = view.findViewById(R.id.btn_create_wallet)
+        linearLayout = view.findViewById(R.id.linearLayout)
         createWallet!!.setOnClickListener(this)
+        linearLayout!!.setOnClickListener(this)
 
 
     }

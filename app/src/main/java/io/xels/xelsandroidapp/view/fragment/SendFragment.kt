@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -56,7 +57,7 @@ class SendFragment : Fragment(), View.OnClickListener {
                     toolBarControll?.showDialog(true)
 
 
-                    if(toolBarControll!!.internetCheck(activity)){
+                    if (toolBarControll!!.internetCheck(activity)) {
                         makeTransection()
                     }
 
@@ -70,6 +71,9 @@ class SendFragment : Fragment(), View.OnClickListener {
             R.id.scanBarCodeBtn -> {
                 var intent: Intent = Intent(activity, ScannerAcitivity::class.java)
                 startActivity(intent)
+            }
+            R.id.layout -> {
+                Utils.hideKeyBoard(activity)
             }
 
 
@@ -157,7 +161,6 @@ class SendFragment : Fragment(), View.OnClickListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        toolBarControll?.setTitle("Send")
         EventBus.getDefault().register(this)
 
 
@@ -170,7 +173,10 @@ class SendFragment : Fragment(), View.OnClickListener {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        toolBarControll?.setTitle("Send")
+        toolBarControll?.showShareBtn(false)
         sendBtn.setOnClickListener(this)
+        layout.setOnClickListener(this)
         scanBarCodeBtn.setOnClickListener(this)
         totalAmount = BigDecimal.valueOf(PreferenceManager.getLong(AppConstance.balance).div(AppConstance.shatoshi))
         amountAvailableTxtView.text = totalAmount.toString()
@@ -178,30 +184,63 @@ class SendFragment : Fragment(), View.OnClickListener {
 
         amountEditTxt.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(s: Editable?) {
+
+                Log.e(TAG, "afterTextChanged")
+
+
             }
 
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+
+                Log.e(TAG, "beforeTextChanged")
+
+
             }
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+
+                Log.e(TAG, "onTextChanged")
+
+
                 if (!addressTxtView.text.isEmpty() && addressTxtView.text.length == 34) {
                     getFee(apiInterface)
+                } else if (addressTxtView.text.length < 34) {
+                    feeEditText.setText(R.string.please_enter_a_valid_fee)
+                } else if (addressTxtView.text.isEmpty()) {
+                    feeEditText.setText(R.string.please_enter_a_valid_fee)
+
                 }
             }
 
         })
 
 
-        addressTxtView . addTextChangedListener (object : TextWatcher {
+        addressTxtView.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(s: Editable?) {
+
+                Log.e(TAG, "afterTextChanged")
+
             }
 
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+
+                Log.e(TAG, "beforeTextChanged")
+
+
             }
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+
+                Log.e(TAG, "onTextChanged")
+
+
                 if (!addressTxtView.text.isEmpty() && addressTxtView.text.length == 34) {
                     getFee(apiInterface)
+                } else if (addressTxtView.text.length < 34) {
+                    feeEditText.setText(R.string.please_enter_a_valid_fee)
+                } else if (addressTxtView.text.isEmpty()) {
+                    feeEditText.setText(R.string.please_enter_a_valid_fee)
+
                 }
             }
 
@@ -221,8 +260,7 @@ class SendFragment : Fragment(), View.OnClickListener {
 
                     amount = BigDecimal.valueOf(response.body()?.innerMsg!!.div(AppConstance.shatoshi))
                     feeEditText.text = amount.toString()
-                }
-                else{
+                } else {
                     feeEditText.setText(R.string.please_enter_a_valid_fee)
                 }
             }
@@ -252,13 +290,6 @@ class SendFragment : Fragment(), View.OnClickListener {
         addressTxtView.setText(event.address)
 
     }
-
-
-/*
-    override fun onStop() {
-        super.onStop()
-    }
-*/
 
     override fun onDestroy() {
         super.onDestroy()

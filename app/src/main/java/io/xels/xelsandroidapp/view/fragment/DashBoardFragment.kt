@@ -35,15 +35,16 @@ class DashBoardFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        toolBarControll?.setTitle("DashBoard")
-        toolBarControll?.showDialog(true)
+
 
     }
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        toolBarControll?.setTitle("DashBoard")
+        toolBarControll?.showDialog(true)
+        toolBarControll?.showShareBtn(false)
         val apiInterface: ApiInterface? = ApiClient.getClient()?.create(ApiInterface::class.java)
 
 

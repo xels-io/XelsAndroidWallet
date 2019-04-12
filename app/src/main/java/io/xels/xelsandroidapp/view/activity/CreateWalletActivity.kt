@@ -14,6 +14,10 @@ import io.xels.xelsandroidapp.interfaces.ToolBarControll
 import io.xels.xelsandroidapp.ulits.Utils
 
 class CreateWalletActivity : FragmentActivity(), ToolBarControll {
+    override fun showShareBtn(show: Boolean) {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
     override fun setTitle(title: String) {
     }
 

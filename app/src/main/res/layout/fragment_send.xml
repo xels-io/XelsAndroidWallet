@@ -2,12 +2,14 @@
 <ScrollView
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+>
     <LinearLayout
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@color/whiteColor"
+            android:id="@+id/layout"
     >
 
         <TextView
@@ -53,6 +55,7 @@
                     android:hint="@string/_0_00_xels"
                     android:text=""
                     android:maxLines="1"
+                    android:inputType="numberDecimal"
 
             />
 
@@ -158,7 +161,6 @@
                     android:id="@+id/passwordEditTxtView"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/edittext_height"
-
                     android:background="@drawable/restore_wallet_field_background"
                     android:textSize="@dimen/text_size_small"
                     android:paddingLeft="@dimen/padding_left"

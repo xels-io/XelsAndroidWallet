@@ -22,14 +22,29 @@ import io.xels.xelsandroidapp.view.fragment.HistoryFragment
 import io.xels.xelsandroidapp.view.fragment.ReceiveFragment
 import io.xels.xelsandroidapp.view.fragment.SendFragment
 import io.xels.xelsandroidapp.interfaces.ToolBarControll
+import io.xels.xelsandroidapp.model.AddressGetModel
+import io.xels.xelsandroidapp.model.CallAddressModel
 import io.xels.xelsandroidapp.ulits.AppConstance
 import io.xels.xelsandroidapp.ulits.PreferenceManager
 import io.xels.xelsandroidapp.ulits.Utils
 import io.xels.xelsandroidapp.ulits.Utils.isNetworkAvailable
+import kotlinx.android.synthetic.main.fragment_recieve.*
+import org.greenrobot.eventbus.EventBus
+import org.greenrobot.eventbus.Subscribe
+import org.greenrobot.eventbus.ThreadMode
 
 class BaseActivity : FragmentActivity(), ToolBarControll, View.OnClickListener,
 
     NavigationView.OnNavigationItemSelectedListener {
+    override fun showShareBtn(show: Boolean) {
+        if (show) {
+            shareBtn?.visibility = View.VISIBLE
+        } else {
+            shareBtn?.visibility = View.GONE
+
+        }
+    }
+
     override fun onNavigationItemSelected(p0: MenuItem): Boolean {
         val id = p0.itemId
 
@@ -90,8 +105,14 @@ class BaseActivity : FragmentActivity(), ToolBarControll, View.OnClickListener,
 
         when (v?.id) {
 
-            R.id.drawerBtn ->
+            R.id.drawerBtn -> {
                 drawer!!.openDrawer(Gravity.START)
+
+            }
+            R.id.shareBtn -> {
+                EventBus.getDefault().post(CallAddressModel())
+
+            }
         }
 
 
@@ -137,6 +158,7 @@ class BaseActivity : FragmentActivity(), ToolBarControll, View.OnClickListener,
 
 
     var fragment: Fragment? = null
+    var shareBtn: Button? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -157,9 +179,11 @@ class BaseActivity : FragmentActivity(), ToolBarControll, View.OnClickListener,
         toolBar = findViewById(R.id.toolbar)
         titleTxt = toolBar?.findViewById(R.id.text_screen_title)
         drawerBtn = toolBar?.findViewById(R.id.drawerBtn)
+        shareBtn = toolBar?.findViewById(R.id.shareBtn)
+        shareBtn?.setOnClickListener(this)
         drawer = findViewById<View>(R.id.drawer_layout) as DrawerLayout
         drawerBtn?.setOnClickListener(this)
-        titleTxt?.text = "DashBoard"
+        titleTxt?.text = "Dashboard"
 
         Log.d("wallet name:", PreferenceManager.getString(AppConstance.walletName))
         fragment = DashBoardFragment()
@@ -186,6 +210,5 @@ class BaseActivity : FragmentActivity(), ToolBarControll, View.OnClickListener,
 
 
     }
-
 
 }

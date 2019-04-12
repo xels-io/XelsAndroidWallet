@@ -13,4 +13,6 @@ interface ToolBarControll {
 
         return isActive
     }
+
+    fun showShareBtn(show:Boolean)
 }

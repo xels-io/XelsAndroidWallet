@@ -22,12 +22,20 @@ import kotlinx.android.synthetic.main.address_dialog.view.*
 import kotlinx.android.synthetic.main.fragment_recieve.*
 import android.support.v4.content.ContextCompat.startActivity
 import android.R
+import android.app.Activity
 import android.graphics.Bitmap
 import android.graphics.Point
 import android.view.WindowManager
+import android.view.inputmethod.InputMethodManager
 import androidmads.library.qrgenearator.QRGContents
 import androidmads.library.qrgenearator.QRGEncoder
+import com.google.gson.GsonBuilder
+import com.google.gson.JsonSyntaxException
+import io.xels.xelsandroidapp.response_model.ErrorApiResponse
 import kotlinx.android.synthetic.main.show_qr_code.view.*
+import org.greenrobot.eventbus.EventBus
+import org.json.JSONObject
+import retrofit2.Response
 
 
 object Utils {
@@ -82,38 +90,53 @@ object Utils {
             .setLabel("Loading...")
     }
 
-    fun handleErrorResponse(resonse: String, fragmentActivity: FragmentActivity, code: Int) {
+    fun handleErrorResponse(
+        response: Response<*>,
+        fragmentActivity: FragmentActivity,
+        code: Int,
+        jsonObject: JSONObject
+    ) {
 
-        Toast.makeText(fragmentActivity, resonse, Toast.LENGTH_SHORT).show()
+        val gson = GsonBuilder().create()
+        var mError = ErrorApiResponse()
+        try {
+            if (response != null) {
+                mError =
+                    gson.fromJson<ErrorApiResponse>(response.errorBody()!!.toString(), ErrorApiResponse::class.java!!)
+            } else if (jsonObject != null) {
+                mError = gson.fromJson<ErrorApiResponse>(jsonObject.toString(), ErrorApiResponse::class.java!!)
+            }
 
-        /*       when (code) {
+            when (code) {
 
 
+            /*    400 ->
+                    Toast.makeText(fragmentActivity, resonse, Toast.LENGTH_SHORT).show()
+                401 ->
+                    Toast.makeText(fragmentActivity, resonse, Toast.LENGTH_SHORT).show()
+                403 ->
+                    Toast.makeText(fragmentActivity, resonse, Toast.LENGTH_SHORT).show()
+                404 ->
+                    Toast.makeText(fragmentActivity, resonse, Toast.LENGTH_SHORT).show()
+                406 ->
+                    Toast.makeText(fragmentActivity, resonse, Toast.LENGTH_SHORT).show()
+                500 ->
+                    Toast.makeText(fragmentActivity, resonse, Toast.LENGTH_SHORT).show()
+                502 ->
+                    Toast.makeText(fragmentActivity, resonse, Toast.LENGTH_SHORT).show()
+                404 ->
+                    Toast.makeText(fragmentActivity, resonse, Toast.LENGTH_SHORT).show()
+                404 ->
+                    Toast.makeText(fragmentActivity, resonse, Toast.LENGTH_SHORT).show()
+                404 ->
+                    Toast.makeText(fragmentActivity, resonse, Toast.LENGTH_SHORT).show()*/
+            }
 
-                       400 ->
-                       Toast.makeText(fragmentActivity, resonse, Toast.LENGTH_SHORT).show()
-                   401 ->
-                       Toast.makeText(fragmentActivity, resonse, Toast.LENGTH_SHORT).show()
-                   403 ->
-                       Toast.makeText(fragmentActivity, resonse, Toast.LENGTH_SHORT).show()
-                   404 ->
-                       Toast.makeText(fragmentActivity, resonse, Toast.LENGTH_SHORT).show()
-                   406 ->
-                       Toast.makeText(fragmentActivity, resonse, Toast.LENGTH_SHORT).show()
-                   500 ->
-                       Toast.makeText(fragmentActivity, resonse, Toast.LENGTH_SHORT).show()
-                   502 ->
-                       Toast.makeText(fragmentActivity, resonse, Toast.LENGTH_SHORT).show()
-                   404 ->
-                       Toast.makeText(fragmentActivity, resonse, Toast.LENGTH_SHORT).show()
-                   404 ->
-                       Toast.makeText(fragmentActivity, resonse, Toast.LENGTH_SHORT).show()
-                   404 ->
-                       Toast.makeText(fragmentActivity, resonse, Toast.LENGTH_SHORT).show()
-               }
-       */
-
+        } catch (e: JsonSyntaxException) {
+            e.printStackTrace()
+        }
     }
+
 
     fun isNetworkAvailable(context: Context, typeNetworks: IntArray): Boolean {
         try {
@@ -132,14 +155,20 @@ object Utils {
     }
 
 
-/*    fun hideKeyBoard(activity: Activity) {
-        val inputMethodManager = activity.getSystemService(
-            Activity.INPUT_METHOD_SERVICE
+    fun hideKeyBoard(activity: FragmentActivity?) {
+        val inputMethodManager = activity?.getSystemService(
+            FragmentActivity.INPUT_METHOD_SERVICE
         ) as InputMethodManager
-        inputMethodManager.hideSoftInputFromWindow(
-            activity.currentFocus.windowToken, 0
-        )
-    }*/
+
+
+        if (inputMethodManager.isAcceptingText) {
+            inputMethodManager.hideSoftInputFromWindow(
+                activity.currentFocus.windowToken, 0
+            )
+        }
+
+
+    }
 
     fun showOptionDialog(activity: FragmentActivity?, address: String?) {
         val mDialogView = LayoutInflater.from(activity).inflate(io.xels.xelsandroidapp.R.layout.address_dialog, null)

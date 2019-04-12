@@ -11,6 +11,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.TextView
 import io.xels.xelsandroidapp.R
 import io.xels.xelsandroidapp.adapter.ShowAllAddressAdapter
 import io.xels.xelsandroidapp.interfaces.ToolBarControll
@@ -64,6 +65,8 @@ class ShowAllAddressFragment : Fragment(), View.OnClickListener {
     var unUsedAddress: ArrayList<String>? = ArrayList()
     var changed: ArrayList<String>? = ArrayList()
 
+    var noData:TextView?=null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         toolBarControll?.setTitle("Used Address")
@@ -76,7 +79,8 @@ class ShowAllAddressFragment : Fragment(), View.OnClickListener {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        noData=view.findViewById(R.id.noData)
+        toolBarControll?.showShareBtn(false)
         listener()
         showAllAddress()
     }
@@ -157,12 +161,25 @@ class ShowAllAddressFragment : Fragment(), View.OnClickListener {
     }
 
     private fun showAddress(response: ArrayList<String>?) {
-        showAllAddressAdapter = ShowAllAddressAdapter(response)
-        val mLayoutManager = LinearLayoutManager(activity, LinearLayoutManager.VERTICAL, false)
-        allAddress.setLayoutManager(mLayoutManager)
-        allAddress.setItemAnimator(DefaultItemAnimator())
-        allAddress.setAdapter(showAllAddressAdapter)
-        allAddress.setHasFixedSize(true)
+
+
+        if (response?.size!! >0){
+            noData?.visibility=View.GONE
+            allAddress?.visibility=View.VISIBLE
+
+
+            showAllAddressAdapter = ShowAllAddressAdapter(response)
+            val mLayoutManager = LinearLayoutManager(activity, LinearLayoutManager.VERTICAL, false)
+            allAddress.setLayoutManager(mLayoutManager)
+            allAddress.setItemAnimator(DefaultItemAnimator())
+            allAddress.setAdapter(showAllAddressAdapter)
+            allAddress.setHasFixedSize(true)
+        }else{
+            noData?.visibility=View.VISIBLE
+            allAddress?.visibility=View.GONE
+        }
+
+
     }
 
     override fun onAttach(context: Context?) {
@@ -188,12 +205,7 @@ class ShowAllAddressFragment : Fragment(), View.OnClickListener {
 
     @Subscribe(threadMode = ThreadMode.MAIN)
     fun onMessageEvent(event: AddressGetModel) {
-
         Log.e("adas", event.address)
-
-/*
-        Utils.showExitGameDialog(activity)
-*/
         Utils.showOptionDialog(activity, event.address)
     }
 

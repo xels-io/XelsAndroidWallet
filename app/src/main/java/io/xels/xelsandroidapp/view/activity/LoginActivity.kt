@@ -17,6 +17,7 @@ import android.widget.TextView
 import android.widget.Toast
 import com.kaopiz.kprogresshud.KProgressHUD
 import io.xels.xelsandroidapp.R
+import io.xels.xelsandroidapp.response_model.ErrorApiResponse
 import io.xels.xelsandroidapp.response_model.LoadApiResponseModel
 import io.xels.xelsandroidapp.response_model.NodeStatusApiResponse
 import io.xels.xelsandroidapp.retrofit.ApiClient
@@ -72,6 +73,8 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener, Callback<NodeSt
         decryptBtn.setOnClickListener(this)
         restoreWalletBtn.setOnClickListener(this)
         createWalletBtn.setOnClickListener(this)
+        layout.setOnClickListener(this)
+        container.setOnClickListener(this)
     }
 
     fun checkPermission() {
@@ -136,7 +139,8 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener, Callback<NodeSt
                             progress?.dismiss()
                             println("try later")
 
-                            Utils.handleErrorResponse(response.errorBody().toString(),this@LoginActivity,response.code())
+
+                            Utils.handleErrorResponse(response,this@LoginActivity,response.code())
 
                         }
 
@@ -166,6 +170,15 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener, Callback<NodeSt
 
     override fun onClick(v: View?) {
         when (v?.id) {
+
+
+            R.id.layout->{
+                Utils.hideKeyBoard(this@LoginActivity)
+            }
+            R.id.container -> {
+                Utils.hideKeyBoard(this@LoginActivity)
+            }
+
             R.id.decryptBtn ->
 
                 if (!walletEditTxt.text.toString().isEmpty() && !passwordEditTxt.text.toString().isEmpty()) {
