@@ -136,6 +136,35 @@
                     android:maxLines="1"
 
             />
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/layout_margin_left"
+                    android:layout_marginRight="@dimen/layout_margin_left"
+                    android:layout_marginTop="@dimen/layout_margin"
+                    android:layout_marginBottom="@dimen/layout_margin_small"
+                    android:paddingLeft="@dimen/padding_left"
+                    android:textSize="@dimen/text_size"
+                    android:text="@string/passphrase"
+                    android:textColor="@color/colorPrimary"
+
+            />
+
+            <EditText
+                    android:id="@+id/passphraseTxtView"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/edittext_height"
+                    android:layout_marginLeft="@dimen/layout_margin_left"
+                    android:layout_marginRight="@dimen/layout_margin_left"
+                    android:layout_marginBottom="@dimen/layout_margin_small"
+                    android:textSize="@dimen/text_size"
+                    android:paddingLeft="@dimen/padding_left"
+                    android:background="@drawable/restore_wallet_field_background"
+                    android:hint="@string/enter_a_passphrase"
+                    android:inputType="textPassword"
+                    android:maxLines="1"
+
+            />
 
             <Button
                     android:id="@+id/restoreBtn"

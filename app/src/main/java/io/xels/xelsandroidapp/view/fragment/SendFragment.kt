@@ -130,11 +130,8 @@ class SendFragment : Fragment(), View.OnClickListener {
                                         passwordEditTxtView.setText("")
                                         feeEditText.setText(R.string.please_enter_a_valid_fee)
                                     } else {
-                                        Toast.makeText(
-                                            activity,
-                                            "Something went wrong, please try later",
-                                            Toast.LENGTH_SHORT
-                                        ).show()
+                                        Utils.handleErrorResponse(response,activity,response.code())
+
                                     }
 
 
@@ -262,6 +259,8 @@ class SendFragment : Fragment(), View.OnClickListener {
                     feeEditText.text = amount.toString()
                 } else {
                     feeEditText.setText(R.string.please_enter_a_valid_fee)
+                    Utils.handleErrorResponse(response,activity,response.code())
+
                 }
             }
 

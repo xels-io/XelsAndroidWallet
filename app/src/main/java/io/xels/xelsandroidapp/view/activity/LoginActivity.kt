@@ -17,7 +17,6 @@ import android.widget.TextView
 import android.widget.Toast
 import com.kaopiz.kprogresshud.KProgressHUD
 import io.xels.xelsandroidapp.R
-import io.xels.xelsandroidapp.response_model.ErrorApiResponse
 import io.xels.xelsandroidapp.response_model.LoadApiResponseModel
 import io.xels.xelsandroidapp.response_model.NodeStatusApiResponse
 import io.xels.xelsandroidapp.retrofit.ApiClient
@@ -29,6 +28,11 @@ import kotlinx.android.synthetic.main.activity_login.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import android.R.string
+import android.support.design.widget.Snackbar
+import org.greenrobot.eventbus.EventBus
+import org.json.JSONObject
+
 
 class LoginActivity : AppCompatActivity(), View.OnClickListener, Callback<NodeStatusApiResponse> {
     override fun onFailure(call: Call<NodeStatusApiResponse>, t: Throwable) {
@@ -55,6 +59,7 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener, Callback<NodeSt
         Utils.showDialog(this)
         init()
         checkPermission()
+
 
     }
 
@@ -138,9 +143,10 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener, Callback<NodeSt
                         } else {
                             progress?.dismiss()
                             println("try later")
-
-
-                            Utils.handleErrorResponse(response,this@LoginActivity,response.code())
+/*
+                            Toast.makeText(this@LoginActivity, jObjError.getString("InnerMsg"), Toast.LENGTH_LONG).show()
+*/
+                            Utils.handleErrorResponse(response, this@LoginActivity, response.code())
 
                         }
 
@@ -172,7 +178,7 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener, Callback<NodeSt
         when (v?.id) {
 
 
-            R.id.layout->{
+            R.id.layout -> {
                 Utils.hideKeyBoard(this@LoginActivity)
             }
             R.id.container -> {
@@ -185,8 +191,9 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener, Callback<NodeSt
 
                     if (Utils.isNetworkAvailable(this@LoginActivity, typeNetwork)) {
                         callApi()
-                    }
-                     else {
+
+
+                    } else {
                         Toast.makeText(this@LoginActivity, "Internet not available", Toast.LENGTH_SHORT).show()
 
                     }
@@ -228,7 +235,6 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener, Callback<NodeSt
 
 
     }
-
 
 }
 

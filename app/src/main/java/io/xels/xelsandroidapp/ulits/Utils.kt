@@ -25,15 +25,20 @@ import android.R
 import android.app.Activity
 import android.graphics.Bitmap
 import android.graphics.Point
+import android.support.design.widget.Snackbar
+import android.util.Log
 import android.view.WindowManager
 import android.view.inputmethod.InputMethodManager
 import androidmads.library.qrgenearator.QRGContents
 import androidmads.library.qrgenearator.QRGEncoder
+import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import com.google.gson.JsonSyntaxException
+import com.google.gson.reflect.TypeToken
 import io.xels.xelsandroidapp.response_model.ErrorApiResponse
 import kotlinx.android.synthetic.main.show_qr_code.view.*
 import org.greenrobot.eventbus.EventBus
+import org.json.JSONArray
 import org.json.JSONObject
 import retrofit2.Response
 
@@ -92,25 +97,24 @@ object Utils {
 
     fun handleErrorResponse(
         response: Response<*>,
-        fragmentActivity: FragmentActivity,
-        code: Int,
-        jsonObject: JSONObject
+        fragmentActivity: FragmentActivity?,
+        code: Int
     ) {
 
-        val gson = GsonBuilder().create()
-        var mError = ErrorApiResponse()
-        try {
-            if (response != null) {
-                mError =
-                    gson.fromJson<ErrorApiResponse>(response.errorBody()!!.toString(), ErrorApiResponse::class.java!!)
-            } else if (jsonObject != null) {
-                mError = gson.fromJson<ErrorApiResponse>(jsonObject.toString(), ErrorApiResponse::class.java!!)
-            }
-
-            when (code) {
+        val jObjError = JSONObject(response.errorBody()?.string())
 
 
-            /*    400 ->
+        var jArray: JSONArray = jObjError.getJSONArray("InnerMsg")
+
+        var jObj: JSONObject = jArray.getJSONObject(0)
+
+        var msg: String = jObj.getString("message")
+        Toast.makeText(fragmentActivity, msg, Toast.LENGTH_LONG).show()
+
+/*        when (code) {
+
+
+                400 ->
                     Toast.makeText(fragmentActivity, resonse, Toast.LENGTH_SHORT).show()
                 401 ->
                     Toast.makeText(fragmentActivity, resonse, Toast.LENGTH_SHORT).show()
@@ -129,12 +133,8 @@ object Utils {
                 404 ->
                     Toast.makeText(fragmentActivity, resonse, Toast.LENGTH_SHORT).show()
                 404 ->
-                    Toast.makeText(fragmentActivity, resonse, Toast.LENGTH_SHORT).show()*/
-            }
-
-        } catch (e: JsonSyntaxException) {
-            e.printStackTrace()
-        }
+                    Toast.makeText(fragmentActivity, resonse, Toast.LENGTH_SHORT).show()
+        }*/
     }
 
 
@@ -169,6 +169,8 @@ object Utils {
 
 
     }
+
+
 
     fun showOptionDialog(activity: FragmentActivity?, address: String?) {
         val mDialogView = LayoutInflater.from(activity).inflate(io.xels.xelsandroidapp.R.layout.address_dialog, null)

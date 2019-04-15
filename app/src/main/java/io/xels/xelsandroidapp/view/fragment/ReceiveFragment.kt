@@ -116,6 +116,7 @@ class ReceiveFragment : Fragment(), View.OnClickListener {
                         } else {
                             println("dadasdasd")
                             toolBarControll?.showDialog(false)
+                            Utils.handleErrorResponse(response,activity,response.code())
 
                         }
 

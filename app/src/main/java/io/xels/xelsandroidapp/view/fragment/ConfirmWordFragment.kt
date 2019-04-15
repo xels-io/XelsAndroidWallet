@@ -124,7 +124,7 @@ class ConfirmWordFragment : Fragment(), View.OnClickListener {
                         } else {
                             toolBarControll?.showDialog(false)
                             println("try later")
-                            Utils.showError(activity)
+                            Utils.handleErrorResponse(response,activity,response.code())
                         }
 
                     }

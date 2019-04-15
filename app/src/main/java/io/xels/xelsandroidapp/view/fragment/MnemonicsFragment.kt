@@ -128,6 +128,7 @@ class MnemonicsFragment : Fragment(), View.OnClickListener {
                     gridview?.setAdapter(adapter)
                     toolBarControll?.showDialog(false)
                 } else {
+                    Utils.handleErrorResponse(response,activity,response.code())
 
                 }
 

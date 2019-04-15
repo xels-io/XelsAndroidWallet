@@ -17,7 +17,7 @@ interface ApiInterface {
 
     @POST(AppConstance.postAPIResponse)
     fun restoreWalletApi(
-        @Query("URL") url: String, @Query("creationDate") date: String, @Query("mnemonic") mnemonic: String, @Query("name") name: String, @Query(
+        @Query("URL") url: String, @Query("creationDate") date: String, @Query("mnemonic") mnemonic: String, @Query("name") name: String, @Query("passPhrase") passPhrase: String, @Query(
             "password"
         ) password: String
     ): Call<LoadApiResponseModel>

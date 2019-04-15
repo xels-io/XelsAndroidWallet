@@ -6,6 +6,7 @@ import android.support.v4.app.FragmentActivity
 import android.support.v7.widget.Toolbar
 import android.view.View
 import android.widget.*
+import com.kaopiz.kprogresshud.KProgressHUD
 import com.shagi.materialdatepicker.date.DatePickerFragmentDialog
 import io.xels.xelsandroidapp.R
 import io.xels.xelsandroidapp.response_model.LoadApiResponseModel
@@ -26,6 +27,7 @@ class RestoreWalletActivity : FragmentActivity(), View.OnClickListener {
                 if (date?.text.toString().isEmpty() ||
                     word?.text.toString().isEmpty() ||
                     name?.text.toString().isEmpty() ||
+                    mPassphraseTxtView?.text.toString().isEmpty() ||
                     password?.text.toString().isEmpty()
                 ) {
 
@@ -79,11 +81,13 @@ class RestoreWalletActivity : FragmentActivity(), View.OnClickListener {
     var date: TextView? = null
     var word: EditText? = null
     var password: EditText? = null
+    var mPassphraseTxtView: EditText? = null
     var restoreBtn: Button? = null
     var layout: LinearLayout? = null
     var apiInterface: ApiInterface? = null
     var month: Int = 0
     var typeNetwork: IntArray = intArrayOf(ConnectivityManager.TYPE_MOBILE, ConnectivityManager.TYPE_WIFI)
+    private var progress: KProgressHUD? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -93,7 +97,8 @@ class RestoreWalletActivity : FragmentActivity(), View.OnClickListener {
         val toolbar: Toolbar = findViewById(R.id.toolbar) as Toolbar
         val title: TextView = toolbar.findViewById(R.id.text_screen_title) as TextView
         title.setText(R.string.restore_a_wallet)
-
+        progress = KProgressHUD(this)
+        Utils.showDialog(this)
 
         init()
 
@@ -105,6 +110,7 @@ class RestoreWalletActivity : FragmentActivity(), View.OnClickListener {
         date = findViewById(R.id.date)
         word = findViewById(R.id.words)
         password = findViewById(R.id.password)
+        mPassphraseTxtView = findViewById(R.id.passphraseTxtView)
         restoreBtn = findViewById(R.id.restoreBtn)
         layout = findViewById(R.id.layout)
         restoreBtn?.setOnClickListener(this)
@@ -116,19 +122,22 @@ class RestoreWalletActivity : FragmentActivity(), View.OnClickListener {
 
 
     private fun restoreWallet(apiInterface: ApiInterface?) {
+        progress?.show()
 
 
         apiInterface?.restoreWalletApi(
             AppConstance.recoverWallet,
             date?.text.toString(),
             word?.text.toString(),
-            name?.text.toString(),
+            name?.text.toString(), mPassphraseTxtView?.text.toString(),
+
             password?.text.toString()
         )?.enqueue(object : retrofit2.Callback<LoadApiResponseModel?> {
             override fun onFailure(call: Call<LoadApiResponseModel?>, t: Throwable) {
                 println(t.printStackTrace())
                 Toast.makeText(this@RestoreWalletActivity, "Something went wrong. please try later", Toast.LENGTH_SHORT)
                     .show()
+                progress?.dismiss()
 
             }
 
@@ -136,6 +145,7 @@ class RestoreWalletActivity : FragmentActivity(), View.OnClickListener {
                 call: Call<LoadApiResponseModel?>,
                 response: Response<LoadApiResponseModel?>
             ) {
+                progress?.dismiss()
 
                 if (response.isSuccessful) {
 
@@ -147,17 +157,7 @@ class RestoreWalletActivity : FragmentActivity(), View.OnClickListener {
 
                 } else {
 
-                    if (response.code() == 400) {
-                        Toast.makeText(this@RestoreWalletActivity, "Invalid input", Toast.LENGTH_SHORT)
-                            .show()
-                    } else {
-                        Toast.makeText(
-                            this@RestoreWalletActivity,
-                            "Something went wrong. please try later",
-                            Toast.LENGTH_SHORT
-                        )
-
-                    }
+                    Utils.handleErrorResponse(response, this@RestoreWalletActivity, response.code())
 
 
                 }

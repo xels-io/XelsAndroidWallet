@@ -119,6 +119,7 @@ class DashBoardFragment : Fragment() {
                                 }
                                 else{
                                     toolBarControll?.showDialog(false)
+                                    Utils.handleErrorResponse(response,activity,response.code())
 
                                 }
                             }
@@ -128,6 +129,8 @@ class DashBoardFragment : Fragment() {
                 }
                 else{
                     toolBarControll?.showDialog(false)
+                    Utils.handleErrorResponse(response,activity,response.code())
+
                 }
 
 

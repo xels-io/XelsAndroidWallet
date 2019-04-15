@@ -151,6 +151,8 @@ class ShowAllAddressFragment : Fragment(), View.OnClickListener {
 
                 } else {
                     toolBarControll?.showDialog(false)
+                    Utils.handleErrorResponse(response,activity,response.code())
+
 
                 }
 

@@ -107,6 +107,8 @@ class HistoryFragment : Fragment() {
 
                 } else {
                     toolBarControll?.showDialog(false)
+                    Utils.handleErrorResponse(response,activity,response.code())
+
 
                 }
 
