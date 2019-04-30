@@ -44,6 +44,8 @@
         />
         <activity android:name="io.xels.xelsandroidapp.view.activity.CreateWalletActivity"
                   android:screenOrientation="portrait"
+        /> <activity android:name="io.xels.xelsandroidapp.view.activity.UrlChangeActivity"
+                  android:screenOrientation="portrait"
         />
     </application>
 

@@ -38,7 +38,7 @@ class RestoreWalletActivity : FragmentActivity(), View.OnClickListener {
                     if (Utils.isNetworkAvailable(this@RestoreWalletActivity, typeNetwork)) {
                         restoreWallet(apiInterface)
                     } else {
-                        Toast.makeText(this@RestoreWalletActivity, "Internet not available", Toast.LENGTH_SHORT).show()
+                        Utils.showAlertDialg(this@RestoreWalletActivity)
                     }
                 }
 

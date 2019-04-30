@@ -148,7 +148,7 @@ class BaseActivity : FragmentActivity(), ToolBarControll, View.OnClickListener,
 
 
         if (!isActive) {
-            Toast.makeText(context, "Internet not available", Toast.LENGTH_SHORT).show()
+            Utils.showAlertDialg(this@BaseActivity)
         }
 
 

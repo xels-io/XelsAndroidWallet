@@ -82,7 +82,15 @@ class ShowAllAddressFragment : Fragment(), View.OnClickListener {
         noData=view.findViewById(R.id.noData)
         toolBarControll?.showShareBtn(false)
         listener()
-        showAllAddress()
+
+        if (Utils.isNetworkAvailable(activity,AppConstance.typeNetwork)){
+            showAllAddress()
+
+        }else{
+            Utils.showAlertDialg(activity)
+
+        }
+
     }
 
     private fun listener() {

@@ -2,46 +2,53 @@ package io.xels.xelsandroidapp.response_model
 
 import com.google.gson.annotations.SerializedName
 
-data class HistoryApiResponseModel(
-    @SerializedName("statusCode")
-    var statusCode: Int, // 200
-    @SerializedName("statusText")
-    var statusText: String, // OK
+  data class HistoryApiResponseModel(
     @SerializedName("InnerMsg")
-    var innerMsg: InnerMsg
+    val innerMsg: InnerMsg,
+    @SerializedName("statusCode")
+    val statusCode: Int, // 200
+    @SerializedName("statusText")
+    val statusText: String // OK
 ) {
     data class InnerMsg(
         @SerializedName("history")
-        var history: List<History>
+        val history: List<History>
     ) {
         data class History(
-            @SerializedName("accountName")
-            var accountName: String, // account 0
             @SerializedName("accountHdPath")
-            var accountHdPath: String, // m/44'/105'/0'
+            val accountHdPath: String, // m/44'/105'/0'
+            @SerializedName("accountName")
+            val accountName: String, // account 0
             @SerializedName("coinType")
-            var coinType: Int, // 105
+            val coinType: Int, // 105
             @SerializedName("transactionsHistory")
-            var transactionsHistory: List<TransactionsHistory>
+            val transactionsHistory: List<TransactionsHistory>
         ) {
             data class TransactionsHistory(
-                @SerializedName("type")
-                var type: String, // staked
-                @SerializedName("toAddress")
-                var toAddress: String, // XL2nwvVA9xNCyzPkEuSdeDcCCruDsXLBXp
-                @SerializedName("id")
-                var id: String, // 13f56513eea6e3df603ce6f41e623091a198cd6983736857a2ff9d98f75cf44c
                 @SerializedName("amount")
-                var amount: Long, // 37500000000
-                @SerializedName("payments")
-                var payments: List<Any>,
+                val amount: Long, // 60000000000
                 @SerializedName("confirmedInBlock")
-                var confirmedInBlock: Int, // 2290
-                @SerializedName("timestamp")
-                var timestamp: String, // 1547414272
+                val confirmedInBlock: Int, // 7784
                 @SerializedName("fee")
-                var fee: Int // 10000
-            )
+                val fee: Int, // 10000
+                @SerializedName("id")
+                val id: String, // 3096bbe163b467ddf7af2ad75765921348e1de10e47a7a0cf0dd35e3d27156f6
+                @SerializedName("payments")
+                val payments: List<Payment>,
+                @SerializedName("timestamp")
+                val timestamp: String, // 1556604864
+                @SerializedName("toAddress")
+                val toAddress: String, // XK8E3CJu1wQu4B3Dd5HziNxGZUcgiviMdy
+                @SerializedName("type")
+                val type: String // received
+            ) {
+                data class Payment(
+                    @SerializedName("amount")
+                    val amount: Long, // 54300000000
+                    @SerializedName("destinationAddress")
+                    val destinationAddress: String // XG3AnKuKvdn4L7Tfum8fjCn15LjRKqWUtP
+                )
+            }
         }
     }
 }

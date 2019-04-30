@@ -49,7 +49,13 @@ class HistoryFragment : Fragment() {
         toolBarControll?.showShareBtn(false)
         toolBarControll?.setTitle("History")
 
-        showHistory()
+        if (Utils.isNetworkAvailable(activity, AppConstance.typeNetwork)) {
+            showHistory()
+
+
+        } else {
+            Utils.showAlertDialg(activity)
+        }
 
 
     }
@@ -107,7 +113,7 @@ class HistoryFragment : Fragment() {
 
                 } else {
                     toolBarControll?.showDialog(false)
-                    Utils.handleErrorResponse(response,activity,response.code())
+                    Utils.handleErrorResponse(response, activity, response.code())
 
 
                 }

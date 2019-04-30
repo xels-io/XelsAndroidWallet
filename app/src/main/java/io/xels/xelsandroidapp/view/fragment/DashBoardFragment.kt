@@ -48,8 +48,11 @@ class DashBoardFragment : Fragment() {
         val apiInterface: ApiInterface? = ApiClient.getClient()?.create(ApiInterface::class.java)
 
 
-        if(toolBarControll!!.internetCheck(activity)){
+        if(Utils.isNetworkAvailable(activity,AppConstance.typeNetwork)){
             callBalance(apiInterface)
+
+        }else{
+            Utils.showAlertDialg(activity)
 
         }
 

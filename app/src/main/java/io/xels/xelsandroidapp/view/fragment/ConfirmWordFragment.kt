@@ -16,6 +16,7 @@ import io.xels.xelsandroidapp.retrofit.ApiClient
 import io.xels.xelsandroidapp.retrofit.ApiInterface
 import io.xels.xelsandroidapp.ulits.AppConstance
 import io.xels.xelsandroidapp.ulits.Utils
+import kotlinx.android.synthetic.main.fragment_confirm_words.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -34,19 +35,25 @@ class ConfirmWordFragment : Fragment(), View.OnClickListener {
                         )
                     ) {
 
-                        if (toolBarControll!!.internetCheck(activity)){
+                        if (Utils.isNetworkAvailable(activity, AppConstance.typeNetwork)) {
                             createWallet(mnemonics)
+                        } else {
+                            Utils.showAlertDialg(activity)
                         }
 
-                    }
-
-                else {
+                    } else {
                         Toast.makeText(activity, "Words mismatch", Toast.LENGTH_SHORT).show()
 
                     }
 
                 }
             }
+
+
+            R.id.container -> {
+                Utils.hideKeyBoard(activity)
+            }
+
         }
 
     }
@@ -60,6 +67,7 @@ class ConfirmWordFragment : Fragment(), View.OnClickListener {
     var mnemonics: String? = null
 
     var password: String? = null
+    var passphraseTxtView: String? = null
     var passPhase: String? = null
     var mnemonic: String? = null
     var toolBarControll: ToolBarControll? = null
@@ -77,6 +85,7 @@ class ConfirmWordFragment : Fragment(), View.OnClickListener {
         name = arguments?.getString("name")
         password = arguments?.getString("password")
         mnemonics = arguments?.getString("mnemonics")
+        passphraseTxtView = arguments?.getString("passphraseTxtView")
 
     }
 
@@ -92,6 +101,7 @@ class ConfirmWordFragment : Fragment(), View.OnClickListener {
         te_word8 = view.findViewById(R.id.et_word_no_8) as EditText
         te_word12 = view.findViewById(R.id.et_word_no_12) as EditText
         createBtn?.setOnClickListener(this)
+        container?.setOnClickListener(this)
 
     }
 
@@ -102,7 +112,7 @@ class ConfirmWordFragment : Fragment(), View.OnClickListener {
 
         val apiInterface: ApiInterface? = ApiClient.getClient()?.create(ApiInterface::class.java)
 
-        apiInterface?.createWallet(AppConstance.createWallet, null,  mnemonic,name, password, password)
+        apiInterface?.createWallet(AppConstance.createWallet, null, mnemonic, name, password, passphraseTxtView)
             ?.enqueue(
                 object : Callback<WordResponseModel> {
                     override fun onFailure(call: Call<WordResponseModel>, t: Throwable) {
@@ -110,6 +120,7 @@ class ConfirmWordFragment : Fragment(), View.OnClickListener {
                         toolBarControll?.showDialog(false)
                         Utils.showError(activity)
                     }
+
                     override fun onResponse(
                         call: Call<WordResponseModel>,
                         response: Response<WordResponseModel>
@@ -124,15 +135,13 @@ class ConfirmWordFragment : Fragment(), View.OnClickListener {
                         } else {
                             toolBarControll?.showDialog(false)
                             println("try later")
-                            Utils.handleErrorResponse(response,activity,response.code())
+                            Utils.handleErrorResponse(response, activity, response.code())
                         }
 
                     }
 
 
                 })
-
-
 
 
     }

@@ -49,16 +49,16 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener, Callback<NodeSt
 
     private var progress: KProgressHUD? = null
     var MY_PERMISSIONS_REQUEST_USE_CAMERA: Int = 0x00AF
-    var typeNetwork: IntArray = intArrayOf(ConnectivityManager.TYPE_MOBILE, ConnectivityManager.TYPE_WIFI)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
-
+        PreferenceManager.updateValue(AppConstance.baseUrl,AppConstance.BASE_URL)
+        Log.e(TAG,"Url: +"+PreferenceManager.getString(AppConstance.baseUrl))
         progress = KProgressHUD(this)
         Utils.showDialog(this)
         init()
-        checkPermission()
+       // checkPermission()
 
 
     }
@@ -66,7 +66,10 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener, Callback<NodeSt
     private fun init() {
         val wallet: EditText = findViewById(R.id.walletEditTxt) as EditText
         val password: EditText = findViewById(R.id.passwordEditTxt) as EditText
+        val settingBtn: Button = findViewById(R.id.settingBtn) as Button
         val decryptBtn: Button = findViewById(R.id.decryptBtn) as Button
+
+        settingBtn.setOnClickListener(this)
         val toolbar: Toolbar = findViewById(R.id.toolbar) as Toolbar
         val title: TextView = toolbar.findViewById(R.id.text_screen_title) as TextView
         val createWalletBtn: Button = findViewById(R.id.btn_create_wallet) as Button
@@ -184,18 +187,20 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener, Callback<NodeSt
             R.id.container -> {
                 Utils.hideKeyBoard(this@LoginActivity)
             }
+            R.id.settingBtn -> {
+                val intent = Intent(this, UrlChangeActivity::class.java)
+                startActivity(intent)            }
 
             R.id.decryptBtn ->
 
                 if (!walletEditTxt.text.toString().isEmpty() && !passwordEditTxt.text.toString().isEmpty()) {
 
-                    if (Utils.isNetworkAvailable(this@LoginActivity, typeNetwork)) {
+                    if (Utils.isNetworkAvailable(this@LoginActivity, AppConstance.typeNetwork)) {
                         callApi()
 
 
                     } else {
-                        Toast.makeText(this@LoginActivity, "Internet not available", Toast.LENGTH_SHORT).show()
-
+                        Utils.showAlertDialg(this@LoginActivity)
                     }
 
 
@@ -233,6 +238,12 @@ class LoginActivity : AppCompatActivity(), View.OnClickListener, Callback<NodeSt
             }
         }
 
+
+    }
+
+    override fun onResume() {
+        super.onResume()
+        Log.e(TAG,"Url: +"+PreferenceManager.getString(AppConstance.baseUrl))
 
     }
 

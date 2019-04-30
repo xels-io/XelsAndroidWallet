@@ -1,11 +1,14 @@
 package io.xels.xelsandroidapp.ulits
 
+import android.net.ConnectivityManager
 import java.math.BigDecimal
 
 class AppConstance {
 
     companion object {
+/*
         val STABLE_BASE_URL: String = "http://13.115.56.41:4000/"
+*/
         val BASE_URL: String = "https://api.xels.io:2332"
         val ACCOUNT_NAME: String = "account 0"
 
@@ -32,7 +35,8 @@ class AppConstance {
         val shatoshi: Double = 100000000.0
         val SPLASH_SCREEN_TIMER: Long = 1000
         val keepLogin: String = "keepLogin"
-
+        var typeNetwork: IntArray = intArrayOf(ConnectivityManager.TYPE_MOBILE, ConnectivityManager.TYPE_WIFI)
+            var baseUrl:String="BASE_URL"
 
     }
 

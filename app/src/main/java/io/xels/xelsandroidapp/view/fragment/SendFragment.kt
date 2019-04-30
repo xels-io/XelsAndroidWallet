@@ -57,8 +57,11 @@ class SendFragment : Fragment(), View.OnClickListener {
                     toolBarControll?.showDialog(true)
 
 
-                    if (toolBarControll!!.internetCheck(activity)) {
+                    if (Utils.isNetworkAvailable(activity, AppConstance.typeNetwork)) {
                         makeTransection()
+                    } else {
+                        Utils.showAlertDialg(activity)
+
                     }
 
 
@@ -130,7 +133,7 @@ class SendFragment : Fragment(), View.OnClickListener {
                                         passwordEditTxtView.setText("")
                                         feeEditText.setText(R.string.please_enter_a_valid_fee)
                                     } else {
-                                        Utils.handleErrorResponse(response,activity,response.code())
+                                        Utils.handleErrorResponse(response, activity, response.code())
 
                                     }
 
@@ -200,7 +203,15 @@ class SendFragment : Fragment(), View.OnClickListener {
 
 
                 if (!addressTxtView.text.isEmpty() && addressTxtView.text.length == 34) {
-                    getFee(apiInterface)
+
+                    if (Utils.isNetworkAvailable(activity, AppConstance.typeNetwork)) {
+                        getFee(apiInterface)
+
+                    } else {
+                        Utils.showAlertDialg(activity)
+
+                    }
+
                 } else if (addressTxtView.text.length < 34) {
                     feeEditText.setText(R.string.please_enter_a_valid_fee)
                 } else if (addressTxtView.text.isEmpty()) {
@@ -232,7 +243,15 @@ class SendFragment : Fragment(), View.OnClickListener {
 
 
                 if (!addressTxtView.text.isEmpty() && addressTxtView.text.length == 34) {
-                    getFee(apiInterface)
+
+                    if (Utils.isNetworkAvailable(activity, AppConstance.typeNetwork)) {
+                        getFee(apiInterface)
+
+                    } else {
+                        Utils.showAlertDialg(activity)
+
+                    }
+
                 } else if (addressTxtView.text.length < 34) {
                     feeEditText.setText(R.string.please_enter_a_valid_fee)
                 } else if (addressTxtView.text.isEmpty()) {
@@ -259,7 +278,7 @@ class SendFragment : Fragment(), View.OnClickListener {
                     feeEditText.text = amount.toString()
                 } else {
                     feeEditText.setText(R.string.please_enter_a_valid_fee)
-                    Utils.handleErrorResponse(response,activity,response.code())
+                    //Utils.handleErrorResponse(response, activity, response.code())
 
                 }
             }

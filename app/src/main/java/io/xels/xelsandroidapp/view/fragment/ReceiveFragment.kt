@@ -36,7 +36,7 @@ import org.greenrobot.eventbus.ThreadMode
 class ReceiveFragment : Fragment(), View.OnClickListener {
     override fun onClick(v: View?) {
         when (v?.id) {
-            R.id.copyToClipBoardBtn -> Utils.copyToClipBoard(activity, addressTxtView.text.toString(), "hello")
+            R.id.copyToClipBoardBtn -> Utils.copyToClipBoard(activity, addressTxtView.text.toString(), "Address")
 
 
             R.id.showAllAddressTxtView -> {
@@ -81,6 +81,17 @@ class ReceiveFragment : Fragment(), View.OnClickListener {
         toolBarControll?.showDialog(true)
         copyToClipBoardBtn.setOnClickListener(this)
         showAllAddressTxtView.setOnClickListener(this)
+        if (Utils.isNetworkAvailable(activity,AppConstance.typeNetwork)){
+            getAddress()
+
+        }else{
+            Utils.showAlertDialg(activity)
+        }
+
+
+    }
+
+    private fun getAddress() {
         apiInterface = ApiClient.getClient()?.create(ApiInterface::class.java)
 
         apiInterface?.getUnUsedAddress(
@@ -116,15 +127,13 @@ class ReceiveFragment : Fragment(), View.OnClickListener {
                         } else {
                             println("dadasdasd")
                             toolBarControll?.showDialog(false)
-                            Utils.handleErrorResponse(response,activity,response.code())
+                            Utils.handleErrorResponse(response, activity, response.code())
 
                         }
 
                     }
 
                 })
-
-
     }
 
     private fun showQrCode(response: Response<GetUnUsedAddressResponseModel?>) {

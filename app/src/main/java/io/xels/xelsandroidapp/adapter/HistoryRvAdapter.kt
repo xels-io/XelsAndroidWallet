@@ -41,7 +41,6 @@ class HistoryRvAdapter(var body: HistoryApiResponseModel?/*,var context:Fragment
 
         p0.amountTxtView.text = amount.toString() + " XELS"
         p0.dateTxtView.text = Utils.convertTimeToDate(body!!.innerMsg.history[0].transactionsHistory.get(p1).timestamp)
-        p0.fromAddressTxtView.text = body!!.innerMsg.history[0].transactionsHistory.get(p1).toAddress
 
 
 
@@ -49,15 +48,18 @@ class HistoryRvAdapter(var body: HistoryApiResponseModel?/*,var context:Fragment
 
         when (body!!.innerMsg.history[0].transactionsHistory.get(p1).type) {
             "staked" -> {
+                p0.fromAddressTxtView.text = body!!.innerMsg.history[0].transactionsHistory.get(p1).toAddress
                 p0.statusImage.setBackgroundResource(R.drawable.stake)
                 p0.status.text="Reward"
             }
             "send" -> {
+                p0.fromAddressTxtView.text = body!!.innerMsg.history[0].transactionsHistory.get(p1).payments.get(0).destinationAddress
                 p0.statusImage.setBackgroundResource(R.drawable.send_select)
                 p0.status.text="To"
 
             }
             "received" -> {
+                p0.fromAddressTxtView.text = body!!.innerMsg.history[0].transactionsHistory.get(p1).toAddress
                 p0.statusImage.setBackgroundResource(R.drawable.receive)
                 p0.status.text="From"
 

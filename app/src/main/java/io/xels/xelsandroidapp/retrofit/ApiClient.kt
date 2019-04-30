@@ -3,6 +3,7 @@ package io.xels.xelsandroidapp.retrofit
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import io.xels.xelsandroidapp.ulits.AppConstance
+import io.xels.xelsandroidapp.ulits.PreferenceManager
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
@@ -18,7 +19,7 @@ object ApiClient {
 
             if (retrofit == null) {
                 retrofit =
-                        Retrofit.Builder().baseUrl(AppConstance.BASE_URL)
+                        Retrofit.Builder().baseUrl(PreferenceManager.getString(AppConstance.baseUrl))
                             .addConverterFactory(GsonConverterFactory.create(gson))
                             .build()
             }

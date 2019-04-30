@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.GridView
+import android.widget.TextView
 import io.xels.xelsandroidapp.R
 import io.xels.xelsandroidapp.adapter.WordGridViewAdapter
 import io.xels.xelsandroidapp.interfaces.ToolBarControll
@@ -17,6 +18,8 @@ import io.xels.xelsandroidapp.retrofit.ApiClient
 import io.xels.xelsandroidapp.retrofit.ApiInterface
 import io.xels.xelsandroidapp.ulits.AppConstance
 import io.xels.xelsandroidapp.ulits.Utils
+import kotlinx.android.synthetic.main.fragment_recieve.*
+import okhttp3.internal.Util
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -29,9 +32,10 @@ class MnemonicsFragment : Fragment(), View.OnClickListener {
                 b.putString("word4", separate1?.get(3).toString())
                 b.putString("word8", separate1?.get(7).toString())
                 b.putString("word12", separate1?.get(11).toString())
-                b.putString("name",name)
+                b.putString("name", name)
                 b.putString("password", password)
                 b.putString("mnemonics", mnemonics)
+                b.putString("passphraseTxtView", passphraseTxtView)
                 fragment = ConfirmWordFragment()
                 fragment?.arguments = b
 
@@ -41,6 +45,10 @@ class MnemonicsFragment : Fragment(), View.OnClickListener {
 
 
             }
+
+            R.id.copy_to_clipboard -> {
+                Utils.copyToClipBoard(activity,fullMnemonics , "Mnemonics")
+            }
         }
     }
 
@@ -49,8 +57,11 @@ class MnemonicsFragment : Fragment(), View.OnClickListener {
     var password: String? = null
     var separate1: List<String>? = null
     var mnemonics: String? = null
+    var fullMnemonics: String? = null
+    var passphraseTxtView: String? = null
     var gridview: GridView? = null
     var btn_create_wallet: Button? = null
+    var copy_to_clipboard: TextView? = null
 
     var toolBarControll: ToolBarControll? = null
     var apiInterface: ApiInterface? = null
@@ -63,6 +74,7 @@ class MnemonicsFragment : Fragment(), View.OnClickListener {
         super.onCreate(savedInstanceState)
         name = arguments?.getString("name")
         password = arguments?.getString("pass")
+        passphraseTxtView = arguments?.getString("passphraseTxtView")
         toolBarControll?.showDialog(true)
 
 
@@ -77,8 +89,17 @@ class MnemonicsFragment : Fragment(), View.OnClickListener {
 
         gridview = view.findViewById(R.id.gridview)
         btn_create_wallet = view.findViewById(R.id.btn_create_wallet)
+        copy_to_clipboard = view.findViewById(R.id.copy_to_clipboard)
         btn_create_wallet?.setOnClickListener(this)
-        showHistory()
+        copy_to_clipboard?.setOnClickListener(this)
+
+        if (Utils.isNetworkAvailable(activity, AppConstance.typeNetwork)) {
+            showHistory()
+
+        } else {
+            Utils.showAlertDialg(activity)
+
+        }
 
 
     }
@@ -121,6 +142,10 @@ class MnemonicsFragment : Fragment(), View.OnClickListener {
 
                 if (response.isSuccessful) {
 
+                    fullMnemonics = response.body()?.innerMsg
+
+                    Log.e(TAG, "fullMnemonics: " + fullMnemonics)
+
                     separate1 = response.body()?.innerMsg?.split(" ")
                     mnemonics = response.body()?.innerMsg
                     Log.d(TAG, "word: " + separate1!![2])
@@ -128,7 +153,7 @@ class MnemonicsFragment : Fragment(), View.OnClickListener {
                     gridview?.setAdapter(adapter)
                     toolBarControll?.showDialog(false)
                 } else {
-                    Utils.handleErrorResponse(response,activity,response.code())
+                    Utils.handleErrorResponse(response, activity, response.code())
 
                 }
 

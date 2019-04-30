@@ -16,7 +16,8 @@ class CreateWalletFragment : Fragment(), View.OnClickListener {
         when (v?.id) {
 
             R.id.btn_create_wallet -> {
-                if (name?.text.toString().isEmpty() && password?.text.toString().isEmpty() && confirmPassword?.text.toString().isEmpty()) {
+                if (name?.text.toString().isEmpty() || password?.text.toString().isEmpty() ||
+                    confirmPassword?.text.toString().isEmpty()|| passphraseTxtView?.text.toString().isEmpty()) {
                     Toast.makeText(activity, "Field missing", Toast.LENGTH_SHORT).show()
                 } else {
                     if (password?.text.toString().equals(confirmPassword?.text.toString())) {
@@ -26,6 +27,7 @@ class CreateWalletFragment : Fragment(), View.OnClickListener {
                             b = Bundle()
                             b.putString("name", name?.text.toString())
                             b.putString("pass", password?.text.toString())
+                            b.putString("passphraseTxtView", passphraseTxtView?.text.toString())
                             fragment = MnemonicsFragment()
                             fragment?.arguments = b
 
@@ -54,6 +56,7 @@ class CreateWalletFragment : Fragment(), View.OnClickListener {
     }
 
     var name: EditText? = null
+    var passphraseTxtView: EditText? = null
     var password: EditText? = null
     var confirmPassword: EditText? = null
     var createWallet: Button? = null
@@ -78,6 +81,7 @@ class CreateWalletFragment : Fragment(), View.OnClickListener {
 
         name = view.findViewById(R.id.et_name)
         password = view.findViewById(R.id.et_password)
+        passphraseTxtView = view.findViewById(R.id.passphraseTxtView)
         confirmPassword = view.findViewById(R.id.confirmPassord)
         createWallet = view.findViewById(R.id.btn_create_wallet)
         linearLayout = view.findViewById(R.id.linearLayout)

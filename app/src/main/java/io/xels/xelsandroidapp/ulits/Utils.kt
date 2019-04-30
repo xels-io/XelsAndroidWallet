@@ -24,6 +24,7 @@ import android.support.v4.content.ContextCompat.startActivity
 import android.R
 import android.app.Activity
 import android.graphics.Bitmap
+import android.graphics.Color
 import android.graphics.Point
 import android.support.design.widget.Snackbar
 import android.util.Log
@@ -138,9 +139,9 @@ object Utils {
     }
 
 
-    fun isNetworkAvailable(context: Context, typeNetworks: IntArray): Boolean {
+    fun isNetworkAvailable(context: FragmentActivity?, typeNetworks: IntArray): Boolean {
         try {
-            val connectivityManager = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+            val connectivityManager = context?.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
             for (typeNetwork in typeNetworks) {
                 val networkInfo = connectivityManager.getNetworkInfo(typeNetwork)
                 if (networkInfo != null && networkInfo.state == NetworkInfo.State.CONNECTED) {
@@ -169,7 +170,6 @@ object Utils {
 
 
     }
-
 
 
     fun showOptionDialog(activity: FragmentActivity?, address: String?) {
@@ -240,6 +240,38 @@ object Utils {
         shareIntent.type = "text/plain"
         shareIntent.putExtra(Intent.EXTRA_TEXT, address)
         activity?.startActivity(Intent.createChooser(shareIntent, "Share address using"))
+    }
+
+
+    fun showAlertDialg(activity: FragmentActivity?) {
+        val builder = AlertDialog.Builder(activity)
+
+        // Set the alert dialog title
+        builder.setTitle("Alert!")
+
+        // Display a message on alert dialog
+        builder.setMessage("Internet connection not available")
+
+  /*      // Set a positive button and its click listener on alert dialog
+        builder.setPositiveButton("Goto Settings") { dialog, which ->
+            // Do something when user press the positive button
+
+
+            // Change the app background color
+        }
+*/
+        // Display a neutral button on alert dialog
+        builder.setNeutralButton("Cancel") { _, _ ->
+/*
+            Toast.makeText(activity, "You cancelled the dialog.", Toast.LENGTH_SHORT).show()
+*/
+        }
+
+        // Finally, make the alert dialog using builder
+        val dialog: AlertDialog = builder.create()
+
+        // Display the alert dialog on app interface
+        dialog.show()
     }
 
 
