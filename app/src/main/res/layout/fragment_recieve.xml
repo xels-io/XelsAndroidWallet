@@ -47,13 +47,14 @@
                             android:layout_marginRight="@dimen/layout_margin_small"
                     />
                 </LinearLayout>
-                <Button
+                <TextView
                         android:id="@+id/copyToClipBoardBtn"
-                        android:layout_width="20dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="25dp"
                         android:layout_gravity="center"
-                        android:background="@drawable/paste_icon"
                         android:layout_marginBottom="@dimen/bottom_line_height"
+                        android:text="@string/copy_to_clipboard"
+                        android:textColor="@color/colorPrimary"
                 />
             </LinearLayout>
 

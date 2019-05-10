@@ -60,15 +60,25 @@
                   android:textSize="@dimen/text_size_small"/>
     </LinearLayout>
     <GridView
-              android:id="@+id/gridview"
-              android:layout_width="match_parent"
-              android:layout_height="wrap_content"
-              android:layout_margin="@dimen/gridview_margin"
-              android:numColumns="3"
-              android:verticalSpacing="@dimen/gridview_space"
-              android:stretchMode="columnWidth"
+            android:id="@+id/gridview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/gridview_margin"
+            android:numColumns="3"
+            android:verticalSpacing="@dimen/gridview_space"
+            android:stretchMode="columnWidth"
 
     />
+
+
+    <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+              android:text="@string/copy_to_clipboard"
+              android:id="@+id/copy_to_clipboard"
+              android:gravity="center"
+              android:layout_marginTop="10dp"
+              android:layout_marginBottom="30dp"/>
+
+
     <Button
             android:id="@+id/btn_create_wallet"
             android:layout_width="@dimen/button_width"

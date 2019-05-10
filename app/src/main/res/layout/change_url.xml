@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/whiteColor"
+                android:id="@+id/container">
+
+
+    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+              android:text="Url"
+              android:layout_centerInParent="true"
+              android:layout_above="@+id/url"
+              android:textColor="@color/colorPrimary"
+              android:textSize="@dimen/text_size"
+
+    />
+    <EditText android:layout_width="match_parent"
+              android:background="@drawable/restore_wallet_field_background"
+              android:layout_height="@dimen/edittext_height"
+              android:layout_centerInParent="true"
+              android:layout_marginLeft="30dp"
+              android:layout_marginRight="30dp"
+              android:id="@+id/url"
+              android:paddingLeft="10dp"
+              android:maxLines="1"
+
+    />
+    <Button android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:text="Ok"
+            android:layout_centerInParent="true"
+            android:layout_below="@+id/url"
+            android:textColor="@color/whiteColor"
+            android:textSize="@dimen/text_size"
+            android:background="@drawable/login_btn_background"
+            android:layout_marginTop="20dp"
+            android:id="@+id/okBTn"
+    />
+
+
+</RelativeLayout>

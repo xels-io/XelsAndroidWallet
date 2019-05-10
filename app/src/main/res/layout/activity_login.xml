@@ -6,7 +6,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/whiteColor"
-android:id="@+id/container">
+        android:id="@+id/container">
 
     <LinearLayout
             android:layout_width="match_parent"
@@ -22,7 +22,29 @@ android:id="@+id/container">
                 android:layout_marginLeft="@dimen/toolbar_margin"
                 android:background="@color/colorPrimary"
                 android:id="@+id/toolbar">
-            <include layout="@layout/simple_toolbar"/>
+            <RelativeLayout android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+            >
+                <TextView
+                        android:id="@+id/text_screen_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="20sp"
+                        android:text="@string/login"
+                        android:layout_centerInParent="true"
+                        android:textColor="@color/whiteColor"
+
+                />
+
+                <Button android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginRight="20dp"
+                        android:background="@drawable/ic_settings_white_24dp"
+                android:id="@+id/settingBtn"/>
+
+
+            </RelativeLayout>
         </android.support.v7.widget.Toolbar>
 
         <EditText
